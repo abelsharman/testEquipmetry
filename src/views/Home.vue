@@ -202,11 +202,13 @@
           </div>
 
           <div class="elements_first_row_2 elements_first_row_6">
+            <router-link to="/resource">
             <div class="elements_first_row_6_for_img">
               <img class="r1" src="../assets/rectangle.png" alt="r1">
               <img class="r2" src="../assets/rectangle2.png" alt="r2">
               <p>Ресурсность</p>
             </div>
+            </router-link>
             <strong>Двигатель</strong>
             <small>-3000 мото часов</small>
             <strong>Ходовая часть</strong>
