@@ -167,6 +167,11 @@
         <div class="elements_first_row">
           <div class="elements_first_row_3">
             <p>Предупреждения</p>
+
+            <img src="../assets/vector_danger.png" alt="danger">
+            <small>5 предупреждений</small>
+            <img class="elements_first_row_3_1" src="../assets/ellipse.png" alt="el">
+            <img class="elements_first_row_3_2" src="../assets/ellipse_blue.png" alt="el">
           </div>
         
         
@@ -224,7 +229,84 @@
 
 
       <div class="calendar">
-        <p>asd</p>
+        <div class="calendar_first_row">
+          <div class="calendar_first_row_1">
+            <p>Просроченные события</p>
+            <div class="calendar_first_row_1_red">
+              <strong>Замена стартера</strong>
+              <small>Событие</small>
+              <span>10 декабря</span>
+            </div>
+
+            <div class="calendar_first_row_1_red">
+              <strong>Измерение ходовой</strong>
+              <small>Событие</small>
+              <span>21 декабря</span>
+            </div>
+          </div>
+
+          <div class="calendar_first_row_2">
+            <p>Декабрь 2020 года</p>
+          </div>
+        </div>
+
+
+
+        <div class="calendar_second_row">
+          <div class="calendar_second_row_1">
+            <p>Предстоящие события</p>
+            <small>22 Декабря</small>
+
+            <div class="calerdar_second_row_item">
+              <strong>Тех.обслуживание</strong>
+              <small>Событие</small>
+              <span>22 декабря, вторник</span>
+            </div>
+
+            <div class="calerdar_second_row_item">
+              <strong>Измерение ходовой</strong>
+              <small>Событие</small>
+              <span>22 декабря, вторник</span>
+            </div>
+
+
+            <div class="calerdar_second_row_item">
+              <strong>Измерение ходовой</strong>
+              <small>Событие</small>
+              <span>22 декабря, вторник</span>
+            </div>
+
+
+
+            <div class="calerdar_second_row_item">
+              <strong>Замена стартера</strong>
+              <small>Событие</small>
+              <span>22 декабря, вторник</span>
+            </div>
+
+
+            <div class="calerdar_second_row_item calerdar_second_row_item_green">
+              <strong>Замена стартера</strong>
+              <small>Событие</small>
+              <span>23 декабря, среда</span>
+            </div>
+
+
+            <div class="calerdar_second_row_item calerdar_second_row_item_green">
+              <strong>Замена стартера</strong>
+              <small>Событие</small>
+              <span>23 декабря, среда</span>
+            </div>
+
+
+
+            <span id="calerdar_second_row_small">Ещё 40</span>
+        </div>
+
+
+
+        </div>
+
       </div>
 
 
@@ -249,6 +331,7 @@ export default {
 
 <style>
   .header{
+    font-family: SF UI Text, sans-serif;
     width: 100%;
     margin: 0;
     background-color: #3C4858;
@@ -359,6 +442,7 @@ export default {
 
   /* main part/block */
   .main{
+    font-family: SF UI Text, sans-serif;
     padding: 36px 44px 16px 44px;
     height: 230px;
   }
@@ -393,7 +477,7 @@ export default {
   /* right part/block of main block */
 
   .main_right {
-    font-family: SF UI Text;
+    font-family: SF UI Text, sans-serif;
     float: right;
     width: 80%;
   }
@@ -448,12 +532,17 @@ export default {
   }
   .main_right_first_block_2 p, .main_right_first_block_3 p{
     font-style: normal;
+    width: 192px;
     font-weight: 500;
-    font-size: 15px;
+    font-size: 14px;
     line-height: 17px;
-    text-align: center;
+    
     color: #FFFFFF;
     margin: 0;
+  }
+  .main_right_first_block_3 p{
+    width: 158px;
+    padding-left: 5px;
   }
 
 
@@ -509,7 +598,7 @@ export default {
   .main_right_second_block p{
     font-style: normal;
     font-weight: 500;
-    font-size: 16px;
+    font-size: 14px;
     line-height: 100%;
     color: #3C4858;
     margin: 0;
@@ -624,7 +713,7 @@ export default {
   
   .main_right_second_block_6 p{
     font-weight: 500;
-    font-size: 15px;
+    font-size: 14px;
     line-height: 100%;
     color: #5188E7;
     display: inline-block;
@@ -663,19 +752,19 @@ export default {
     margin: 0;
     margin-top: 10px;
     margin-bottom: 5px;
-    font-size: 15px;
+    font-size: 14px;
     line-height: 100%;
     color: #3C4858;
   }
   .main_right_third_block small{
-    font-size: 19px;
+    font-size: 18px;
     line-height: 100%;  
     color: rgba(60, 72, 88, 0.7);
   }
 
   .main_right_third_block_black, .main_right_third_block_blue{
     font-weight: 500;
-    font-size: 15px;
+    font-size: 14px;
     line-height: 100%;
     color: #3C4858;
   }
@@ -702,6 +791,7 @@ export default {
 
   .elements_and_calendar{
     width: 94%;
+    font-family: SF UI Text, sans-serif;
     padding: 38px 44px;
   }
 
@@ -723,7 +813,6 @@ export default {
     width: 47.8%;
     height: 155px;
     border-radius: 21.67px;
-    font-family: SF UI Text;
     margin-top: 3%;
     display: inline-block;
     background-color: white;
@@ -768,6 +857,12 @@ export default {
   .elements_first_row_3{
     color: white;
     background: linear-gradient(180deg, #DB4B3D 0%, #D03728 100%);
+  }
+  .elements_first_row_3 p{
+    font-weight: 600;
+    padding-left: 16px;
+    font-size: 16px;
+    line-height: 19px;
   }
   .elements_first_row_4{
     vertical-align: top;
@@ -878,6 +973,43 @@ export default {
     line-height: 25px;
     color: #BEBEBE;
   }
+  .elements_first_row_3 img{
+    position: absolute;
+    left: 42.55%;
+    right: 42.25%;
+    top: 34.84%;
+    bottom: 34.73%;
+  }
+  .elements_first_row_3 small{
+    position: absolute;
+    width: 138px;
+    height: 17px;
+    left: 96px;
+    top: 117px;
+
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+
+    text-align: center;
+    color: rgba(255, 255, 255, 0.8);
+    display: block;
+  
+  }
+  .elements_first_row_3 .elements_first_row_3_1 {
+    position: absolute;   
+    width: 34px;
+    height: 34px;
+    left: 277px;
+    top: 105px;
+  }
+  .elements_first_row_3 .elements_first_row_3_2 {
+    position: absolute;
+    left: 88.06%;
+    top: 74%;
+
+  }
 
 
 
@@ -907,10 +1039,139 @@ export default {
 
   .calendar{
     display: inline-block;
-    width: 32%;
-    background-color: lightgreen;
+    width: 464px;
+    border-radius: 21.67px;
+    margin-top: 35px;
+    height: 488px;
+    vertical-align: top;
+    background: #FFFFFF;
+    filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.15));
   }
-  
+ 
+  .calendar_first_row {
+    display: block;
+    height: 40%;
+    width: 100%;
+  }
+  .calendar_first_row_1{
+    float: left;
+    width: 200px;
+    margin-right: 20px;
+    border-top-left-radius: 21.67px;
+    padding-top: 16px;
+  }
+  .calendar_first_row_1 p{
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 100%;
+    color: #5188E7;
+    padding-left: 17px;
+  }
+  .calendar_first_row_1_red{
+    margin-top: 12px;
+    margin-left: 17px;
+    padding-left: 6px;
+    border-left: 2px solid #E7515A;
+    border-radius: 1px;
+  }
+  .calendar_first_row_1_red strong{
+    font-style: normal;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 18px;
+    color: #000000;
+  }
+  .calendar_first_row_1_red small{
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+    color: #000000;
+    display: block;
+    margin-bottom: 4px;
+  }
+  .calendar_first_row_1_red span{
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+    color: rgba(0, 0, 0, 0.5);
+  }
+  .calendar_first_row_2{
+    float: right;
+    width: 220px;
+    border-top-right-radius: 21.67px;
+    padding-top: 16px;
+    background-color: rgb(249,250,251);
+  }
+
+  .calendar_first_row_2 p{
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 100%;
+    color: #5188E7;
+  }
+  .calendar_second_row {
+    width: 100%;
+    display: block;
+    padding-left: 17px;
+  }
+  .calendar_second_row p{
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    margin-bottom: 6px;
+    line-height: 100%;
+    color: #5188E7;
+  }
+  .calendar_second_row small{
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    margin: 0;
+    line-height: 17px;
+    color: #AAAAAA;
+    display: block;
+  }
+  .calerdar_second_row_item{
+    width: 220px;
+    display: inline-block;
+    margin-top: 13px;
+    border-left: 2px solid #5188E7;
+    padding-left: 6px;
+    border-radius: 1px;
+  }
+  .calerdar_second_row_item_green{
+    border-left: 2px solid #71B548;
+  }
+  .calerdar_second_row_item strong{
+    font-style: normal;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 18px;
+    color: #000000;
+  }
+  .calerdar_second_row_item small{
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+    color: #000000;
+    margin: 2px 0;
+  }
+  .calerdar_second_row_item span{
+    font-size: 12px;
+    line-height: 14px;
+    color: rgba(0, 0, 0, 0.5);
+  }
+  #calerdar_second_row_small {
+    color: #BEBEBE;
+    font-size: 15px;
+    padding-left: 2px;
+    margin-top: 10px;
+    display: block;
+  }
+
   
 
 
