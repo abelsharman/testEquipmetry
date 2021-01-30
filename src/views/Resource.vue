@@ -166,10 +166,11 @@
                             
                         </table>
 
-
+                        <router-link to="/engine">
                         <div class="resource_main_certain_element_add">
                             <img src="../assets/vector_plus.png" alt="plus"><span> Добавить запчасть</span>
                         </div>
+                        </router-link>
                     </div>
 
 
@@ -230,10 +231,11 @@
                             
                         </table>
 
-
+                        <router-link to="/engine">
                         <div class="resource_main_certain_element_add">
                             <img src="../assets/vector_plus.png" alt="plus"><span> Добавить запчасть</span>
                         </div>
+                        </router-link>
                     </div>
                     </div>
                 </div>
@@ -300,10 +302,11 @@
                             
                         </table>
 
-
+                        <router-link to="/engine">
                         <div class="resource_main_certain_element_add">
                             <img src="../assets/vector_plus.png" alt="plus"><span> Добавить запчасть</span>
                         </div>
+                        </router-link>
                     </div>
 
 
@@ -364,10 +367,11 @@
                             
                         </table>
 
-
+                         <router-link to="/engine">
                         <div class="resource_main_certain_element_add">
                             <img src="../assets/vector_plus.png" alt="plus"><span> Добавить запчасть</span>
                         </div>
+                         </router-link>
                     </div>
                     </div>
                 </div>
@@ -1053,6 +1057,9 @@ export default {
         line-height: 24px;
         color: #4379D6;
         margin-left: 6px;
+    }
+    .resource_main_certain_element a{
+        text-decoration: none;
     }
 
 </style>
