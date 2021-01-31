@@ -65,38 +65,13 @@
                     </tr>
 
 
-                    <tr class="resource_main_spent_details_table_row">
-                        <td class="resource_main_spent_details_table_row_1">1</td>
-                        <td class="resource_main_spent_details_table_row_2">Поршень</td>
-                        <td class="resource_main_spent_details_table_row_3">ДВС</td>
-                        <td class="resource_main_spent_details_table_row_4">2100</td>
-                        <td class="resource_main_spent_details_table_row_5 resource_main_spent_details_table_row_5_red">-300</td>
-                    </tr>
-
-                    <tr class="resource_main_spent_details_table_row">
-                        <td class="resource_main_spent_details_table_row_1">2</td>
-                        <td class="resource_main_spent_details_table_row_2">Палец</td>
-                        <td class="resource_main_spent_details_table_row_3">ДВС</td>
-                        <td class="resource_main_spent_details_table_row_4">1000</td>
-                        <td class="resource_main_spent_details_table_row_5 resource_main_spent_details_table_row_5_red">-1000</td>
-                    </tr>
-
-
-                    <tr class="resource_main_spent_details_table_row">
-                        <td class="resource_main_spent_details_table_row_1">3</td>
-                        <td class="resource_main_spent_details_table_row_2">Кулак</td>
-                        <td class="resource_main_spent_details_table_row_3">Ходовая</td>
-                        <td class="resource_main_spent_details_table_row_4">3000</td>
-                        <td class="resource_main_spent_details_table_row_5 resource_main_spent_details_table_row_5_yellow">300</td>
-                    </tr>
-
-
-                    <tr class="resource_main_spent_details_table_row">
-                        <td class="resource_main_spent_details_table_row_1">4</td>
-                        <td class="resource_main_spent_details_table_row_2">Вал</td>
-                        <td class="resource_main_spent_details_table_row_3">АКПП</td>
-                        <td class="resource_main_spent_details_table_row_4">5000</td>
-                        <td class="resource_main_spent_details_table_row_5 resource_main_spent_details_table_row_5_red">-2000</td>
+                    <tr class="resource_main_spent_details_table_row" v-for="(item, index) in spent" :key="index">
+                        <td class="resource_main_spent_details_table_row_1">{{ item.id }}</td>
+                        <td class="resource_main_spent_details_table_row_2">{{ item.name }}</td>
+                        <td class="resource_main_spent_details_table_row_3">{{ item.group }}</td>
+                        <td class="resource_main_spent_details_table_row_4">{{ item.srok }}</td>
+                        <td v-if="item.stay < 0" class="resource_main_spent_details_table_row_5 resource_main_spent_details_table_row_5_red">{{ item.stay }}</td>
+                        <td v-if="item.stay > 0" class="resource_main_spent_details_table_row_5 resource_main_spent_details_table_row_5_yellow">{{ item.stay }}</td>
                     </tr>
                 </table>
             </div>
@@ -104,13 +79,13 @@
 
 
             <div class="resource_main_list_of_elements">
-                <div class="resource_main_elements">
+                <div class="resource_main_elements" v-for="(item, index) in tools" :key="index">
                     <img src="../assets/arrow_down.png" alt="arrow_down" @click="openElementDetais">
-                    <p @click="openElementDetais">Двигатель</p>
+                    <p @click="openElementDetais">{{ index }}</p>
 
                     <div class="resource_main_certain_elements">
-                    <div class="resource_main_certain_element">
-                        <p>Поршневая группа</p>
+                    <div class="resource_main_certain_element" v-for="(i, index2) in item.details" :key="index2">
+                        <p>{{ index2 }}</p>
 
                         <table class="resource_main_certain_element_table">
                             <tr>
@@ -122,113 +97,15 @@
                                 <th class="resource_main_certain_element_table_6">Кол-во замен</th>
                             </tr>
 
-                            <tr>
-                                <td class="resource_main_certain_element_table_1">Поршень</td>
-                                <td class="resource_main_certain_element_table_2">7 500,00</td>
-                                <td class="resource_main_certain_element_table_3">16 000,00</td>
-                                <td class="resource_main_certain_element_table_4 resource_main_certain_element_table_4_red">-300</td>
-                                <td class="resource_main_certain_element_table_5"><span>01.12.2020</span><img src="../assets/vector_pen.png" alt="pen"></td>
-                                <td class="resource_main_certain_element_table_6">1,00</td>
+                            <tr v-for="(detail, index3) in i" :key="index3">
+                                <td class="resource_main_certain_element_table_1">{{ detail.name }}</td>
+                                <td class="resource_main_certain_element_table_2">{{ detail.now }}</td>
+                                <td class="resource_main_certain_element_table_3">{{ detail.life }}</td>
+                                <td v-if="detail.left < 0" class="resource_main_certain_element_table_4 resource_main_certain_element_table_4_red">{{ detail.left }}</td>
+                                <td v-if="detail.left > 0" class="resource_main_certain_element_table_4 resource_main_certain_element_table_4_yellow">{{ detail.left }}</td>
+                                <td class="resource_main_certain_element_table_5"><span>{{ detail.data }}</span><img src="../assets/vector_pen.png" alt="pen"></td>
+                                <td class="resource_main_certain_element_table_6">{{ detail.replace }}</td>
                             </tr>
-
-
-                            <tr>
-                                <td class="resource_main_certain_element_table_1">Палец</td>
-                                <td class="resource_main_certain_element_table_2">7 500,00</td>
-                                <td class="resource_main_certain_element_table_3">16 000,00</td>
-                                <td class="resource_main_certain_element_table_4 resource_main_certain_element_table_4_red">-300</td>
-                                <td class="resource_main_certain_element_table_5"><span>02.12.2020</span><img src="../assets/vector_pen.png" alt="pen"></td>
-                                <td class="resource_main_certain_element_table_6">1,00</td>
-                            </tr>
-
-
-
-                            <tr>
-                                <td class="resource_main_certain_element_table_1">Кольца</td>
-                                <td class="resource_main_certain_element_table_2">7 500,00</td>
-                                <td class="resource_main_certain_element_table_3">16 000,00</td>
-                                <td class="resource_main_certain_element_table_4 resource_main_certain_element_table_4_yellow">300</td>
-                                <td class="resource_main_certain_element_table_5"><span>03.12.2020</span><img src="../assets/vector_pen.png" alt="pen"></td>
-                                <td class="resource_main_certain_element_table_6">1,00</td>
-                            </tr>
-
-
-                            <tr>
-                                <td class="resource_main_certain_element_table_1">Кольца</td>
-                                <td class="resource_main_certain_element_table_2">7 500,00</td>
-                                <td class="resource_main_certain_element_table_3">16 000,00</td>
-                                <td class="resource_main_certain_element_table_4 resource_main_certain_element_table_4_red">-2000</td>
-                                <td class="resource_main_certain_element_table_5"><span>04.12.2020</span><img src="../assets/vector_pen.png" alt="pen"></td>
-                                <td class="resource_main_certain_element_table_6">1,00</td>
-                            </tr>
-
-
-                            
-                        </table>
-
-                        <router-link to="/engine">
-                        <div class="resource_main_certain_element_add">
-                            <img src="../assets/vector_plus.png" alt="plus"><span> Добавить запчасть</span>
-                        </div>
-                        </router-link>
-                    </div>
-
-
-                    <div class="resource_main_certain_element">
-                        <p>Головка блока цилиндров</p>
-
-                        <table class="resource_main_certain_element_table">
-                            <tr>
-                                <th class="resource_main_certain_element_table_1">Наименование запчасти</th>
-                                <th class="resource_main_certain_element_table_2">Текующая наработка</th>
-                                <th class="resource_main_certain_element_table_3">Срок службы</th>
-                                <th class="resource_main_certain_element_table_4">Остаточный ресурс</th>
-                                <th class="resource_main_certain_element_table_5">Дата последнего ремонта</th>
-                                <th class="resource_main_certain_element_table_6">Кол-во замен</th>
-                            </tr>
-
-                            <tr>
-                                <td class="resource_main_certain_element_table_1">Поршень</td>
-                                <td class="resource_main_certain_element_table_2">7 500,00</td>
-                                <td class="resource_main_certain_element_table_3">16 000,00</td>
-                                <td class="resource_main_certain_element_table_4 resource_main_certain_element_table_4_red">-300</td>
-                                <td class="resource_main_certain_element_table_5"><span>01.12.2020</span><img src="../assets/vector_pen.png" alt="pen"></td>
-                                <td class="resource_main_certain_element_table_6">1,00</td>
-                            </tr>
-
-
-                            <tr>
-                                <td class="resource_main_certain_element_table_1">Палец</td>
-                                <td class="resource_main_certain_element_table_2">7 500,00</td>
-                                <td class="resource_main_certain_element_table_3">16 000,00</td>
-                                <td class="resource_main_certain_element_table_4 resource_main_certain_element_table_4_red">-300</td>
-                                <td class="resource_main_certain_element_table_5"><span>02.12.2020</span><img src="../assets/vector_pen.png" alt="pen"></td>
-                                <td class="resource_main_certain_element_table_6">1,00</td>
-                            </tr>
-
-
-
-                            <tr>
-                                <td class="resource_main_certain_element_table_1">Кольца</td>
-                                <td class="resource_main_certain_element_table_2">7 500,00</td>
-                                <td class="resource_main_certain_element_table_3">16 000,00</td>
-                                <td class="resource_main_certain_element_table_4 resource_main_certain_element_table_4_yellow">300</td>
-                                <td class="resource_main_certain_element_table_5"><span>03.12.2020</span><img src="../assets/vector_pen.png" alt="pen"></td>
-                                <td class="resource_main_certain_element_table_6">1,00</td>
-                            </tr>
-
-
-                            <tr>
-                                <td class="resource_main_certain_element_table_1">Кольца</td>
-                                <td class="resource_main_certain_element_table_2">7 500,00</td>
-                                <td class="resource_main_certain_element_table_3">16 000,00</td>
-                                <td class="resource_main_certain_element_table_4 resource_main_certain_element_table_4_red">-2000</td>
-                                <td class="resource_main_certain_element_table_5"><span>04.12.2020</span><img src="../assets/vector_pen.png" alt="pen"></td>
-                                <td class="resource_main_certain_element_table_6">1,00</td>
-                            </tr>
-
-
-                            
                         </table>
 
                         <router-link to="/engine">
@@ -240,543 +117,9 @@
                     </div>
                 </div>
 
-                <div class="resource_main_elements">
-                    <img @click="openElementDetais2" src="../assets/arrow_down.png" alt="arrow_down">
-                    <p @click="openElementDetais2">Ходовая</p>
+        
 
-                    <div class="resource_main_certain_elements">
-                    <div class="resource_main_certain_element">
-                        <p>Поршневая группа</p>
-
-                        <table class="resource_main_certain_element_table">
-                            <tr>
-                                <th class="resource_main_certain_element_table_1">Наименование запчасти</th>
-                                <th class="resource_main_certain_element_table_2">Текующая наработка</th>
-                                <th class="resource_main_certain_element_table_3">Срок службы</th>
-                                <th class="resource_main_certain_element_table_4">Остаточный ресурс</th>
-                                <th class="resource_main_certain_element_table_5">Дата последнего ремонта</th>
-                                <th class="resource_main_certain_element_table_6">Кол-во замен</th>
-                            </tr>
-
-                            <tr>
-                                <td class="resource_main_certain_element_table_1">Поршень</td>
-                                <td class="resource_main_certain_element_table_2">7 500,00</td>
-                                <td class="resource_main_certain_element_table_3">16 000,00</td>
-                                <td class="resource_main_certain_element_table_4 resource_main_certain_element_table_4_red">-300</td>
-                                <td class="resource_main_certain_element_table_5"><span>01.12.2020</span><img src="../assets/vector_pen.png" alt="pen"></td>
-                                <td class="resource_main_certain_element_table_6">1,00</td>
-                            </tr>
-
-
-                            <tr>
-                                <td class="resource_main_certain_element_table_1">Палец</td>
-                                <td class="resource_main_certain_element_table_2">7 500,00</td>
-                                <td class="resource_main_certain_element_table_3">16 000,00</td>
-                                <td class="resource_main_certain_element_table_4 resource_main_certain_element_table_4_red">-300</td>
-                                <td class="resource_main_certain_element_table_5"><span>02.12.2020</span><img src="../assets/vector_pen.png" alt="pen"></td>
-                                <td class="resource_main_certain_element_table_6">1,00</td>
-                            </tr>
-
-
-
-                            <tr>
-                                <td class="resource_main_certain_element_table_1">Кольца</td>
-                                <td class="resource_main_certain_element_table_2">7 500,00</td>
-                                <td class="resource_main_certain_element_table_3">16 000,00</td>
-                                <td class="resource_main_certain_element_table_4 resource_main_certain_element_table_4_yellow">300</td>
-                                <td class="resource_main_certain_element_table_5"><span>03.12.2020</span><img src="../assets/vector_pen.png" alt="pen"></td>
-                                <td class="resource_main_certain_element_table_6">1,00</td>
-                            </tr>
-
-
-                            <tr>
-                                <td class="resource_main_certain_element_table_1">Кольца</td>
-                                <td class="resource_main_certain_element_table_2">7 500,00</td>
-                                <td class="resource_main_certain_element_table_3">16 000,00</td>
-                                <td class="resource_main_certain_element_table_4 resource_main_certain_element_table_4_red">-2000</td>
-                                <td class="resource_main_certain_element_table_5"><span>04.12.2020</span><img src="../assets/vector_pen.png" alt="pen"></td>
-                                <td class="resource_main_certain_element_table_6">1,00</td>
-                            </tr>
-
-
-                            
-                        </table>
-
-                        <router-link to="/engine">
-                        <div class="resource_main_certain_element_add">
-                            <img src="../assets/vector_plus.png" alt="plus"><span> Добавить запчасть</span>
-                        </div>
-                        </router-link>
-                    </div>
-
-
-                    <div class="resource_main_certain_element">
-                        <p>Головка блока цилиндров</p>
-
-                        <table class="resource_main_certain_element_table">
-                            <tr>
-                                <th class="resource_main_certain_element_table_1">Наименование запчасти</th>
-                                <th class="resource_main_certain_element_table_2">Текующая наработка</th>
-                                <th class="resource_main_certain_element_table_3">Срок службы</th>
-                                <th class="resource_main_certain_element_table_4">Остаточный ресурс</th>
-                                <th class="resource_main_certain_element_table_5">Дата последнего ремонта</th>
-                                <th class="resource_main_certain_element_table_6">Кол-во замен</th>
-                            </tr>
-
-                            <tr>
-                                <td class="resource_main_certain_element_table_1">Поршень</td>
-                                <td class="resource_main_certain_element_table_2">7 500,00</td>
-                                <td class="resource_main_certain_element_table_3">16 000,00</td>
-                                <td class="resource_main_certain_element_table_4 resource_main_certain_element_table_4_red">-300</td>
-                                <td class="resource_main_certain_element_table_5"><span>01.12.2020</span><img src="../assets/vector_pen.png" alt="pen"></td>
-                                <td class="resource_main_certain_element_table_6">1,00</td>
-                            </tr>
-
-
-                            <tr>
-                                <td class="resource_main_certain_element_table_1">Палец</td>
-                                <td class="resource_main_certain_element_table_2">7 500,00</td>
-                                <td class="resource_main_certain_element_table_3">16 000,00</td>
-                                <td class="resource_main_certain_element_table_4 resource_main_certain_element_table_4_red">-300</td>
-                                <td class="resource_main_certain_element_table_5"><span>02.12.2020</span><img src="../assets/vector_pen.png" alt="pen"></td>
-                                <td class="resource_main_certain_element_table_6">1,00</td>
-                            </tr>
-
-
-
-                            <tr>
-                                <td class="resource_main_certain_element_table_1">Кольца</td>
-                                <td class="resource_main_certain_element_table_2">7 500,00</td>
-                                <td class="resource_main_certain_element_table_3">16 000,00</td>
-                                <td class="resource_main_certain_element_table_4 resource_main_certain_element_table_4_yellow">300</td>
-                                <td class="resource_main_certain_element_table_5"><span>03.12.2020</span><img src="../assets/vector_pen.png" alt="pen"></td>
-                                <td class="resource_main_certain_element_table_6">1,00</td>
-                            </tr>
-
-
-                            <tr>
-                                <td class="resource_main_certain_element_table_1">Кольца</td>
-                                <td class="resource_main_certain_element_table_2">7 500,00</td>
-                                <td class="resource_main_certain_element_table_3">16 000,00</td>
-                                <td class="resource_main_certain_element_table_4 resource_main_certain_element_table_4_red">-2000</td>
-                                <td class="resource_main_certain_element_table_5"><span>04.12.2020</span><img src="../assets/vector_pen.png" alt="pen"></td>
-                                <td class="resource_main_certain_element_table_6">1,00</td>
-                            </tr>
-
-
-                            
-                        </table>
-
-                         <router-link to="/engine">
-                        <div class="resource_main_certain_element_add">
-                            <img src="../assets/vector_plus.png" alt="plus"><span> Добавить запчасть</span>
-                        </div>
-                         </router-link>
-                    </div>
-                    </div>
-                </div>
-
-                <div class="resource_main_elements">
-                    <img src="../assets/arrow_down.png" alt="arrow_down" @click="openElementDetais">
-                    <p @click="openElementDetais">Коробка</p>
-
-                    <div class="resource_main_certain_elements">
-                    <div class="resource_main_certain_element">
-                        <p>Поршневая группа</p>
-
-                        <table class="resource_main_certain_element_table">
-                            <tr>
-                                <th class="resource_main_certain_element_table_1">Наименование запчасти</th>
-                                <th class="resource_main_certain_element_table_2">Текующая наработка</th>
-                                <th class="resource_main_certain_element_table_3">Срок службы</th>
-                                <th class="resource_main_certain_element_table_4">Остаточный ресурс</th>
-                                <th class="resource_main_certain_element_table_5">Дата последнего ремонта</th>
-                                <th class="resource_main_certain_element_table_6">Кол-во замен</th>
-                            </tr>
-
-                            <tr>
-                                <td class="resource_main_certain_element_table_1">Поршень</td>
-                                <td class="resource_main_certain_element_table_2">7 500,00</td>
-                                <td class="resource_main_certain_element_table_3">16 000,00</td>
-                                <td class="resource_main_certain_element_table_4 resource_main_certain_element_table_4_red">-300</td>
-                                <td class="resource_main_certain_element_table_5"><span>01.12.2020</span><img src="../assets/vector_pen.png" alt="pen"></td>
-                                <td class="resource_main_certain_element_table_6">1,00</td>
-                            </tr>
-
-
-                            <tr>
-                                <td class="resource_main_certain_element_table_1">Палец</td>
-                                <td class="resource_main_certain_element_table_2">7 500,00</td>
-                                <td class="resource_main_certain_element_table_3">16 000,00</td>
-                                <td class="resource_main_certain_element_table_4 resource_main_certain_element_table_4_red">-300</td>
-                                <td class="resource_main_certain_element_table_5"><span>02.12.2020</span><img src="../assets/vector_pen.png" alt="pen"></td>
-                                <td class="resource_main_certain_element_table_6">1,00</td>
-                            </tr>
-
-
-
-                            <tr>
-                                <td class="resource_main_certain_element_table_1">Кольца</td>
-                                <td class="resource_main_certain_element_table_2">7 500,00</td>
-                                <td class="resource_main_certain_element_table_3">16 000,00</td>
-                                <td class="resource_main_certain_element_table_4 resource_main_certain_element_table_4_yellow">300</td>
-                                <td class="resource_main_certain_element_table_5"><span>03.12.2020</span><img src="../assets/vector_pen.png" alt="pen"></td>
-                                <td class="resource_main_certain_element_table_6">1,00</td>
-                            </tr>
-
-
-                            <tr>
-                                <td class="resource_main_certain_element_table_1">Кольца</td>
-                                <td class="resource_main_certain_element_table_2">7 500,00</td>
-                                <td class="resource_main_certain_element_table_3">16 000,00</td>
-                                <td class="resource_main_certain_element_table_4 resource_main_certain_element_table_4_red">-2000</td>
-                                <td class="resource_main_certain_element_table_5"><span>04.12.2020</span><img src="../assets/vector_pen.png" alt="pen"></td>
-                                <td class="resource_main_certain_element_table_6">1,00</td>
-                            </tr>
-
-
-                            
-                        </table>
-
-
-                        <div class="resource_main_certain_element_add">
-                            <img src="../assets/vector_plus.png" alt="plus"><span> Добавить запчасть</span>
-                        </div>
-                    </div>
-
-
-                    <div class="resource_main_certain_element">
-                        <p>Головка блока цилиндров</p>
-
-                        <table class="resource_main_certain_element_table">
-                            <tr>
-                                <th class="resource_main_certain_element_table_1">Наименование запчасти</th>
-                                <th class="resource_main_certain_element_table_2">Текующая наработка</th>
-                                <th class="resource_main_certain_element_table_3">Срок службы</th>
-                                <th class="resource_main_certain_element_table_4">Остаточный ресурс</th>
-                                <th class="resource_main_certain_element_table_5">Дата последнего ремонта</th>
-                                <th class="resource_main_certain_element_table_6">Кол-во замен</th>
-                            </tr>
-
-                            <tr>
-                                <td class="resource_main_certain_element_table_1">Поршень</td>
-                                <td class="resource_main_certain_element_table_2">7 500,00</td>
-                                <td class="resource_main_certain_element_table_3">16 000,00</td>
-                                <td class="resource_main_certain_element_table_4 resource_main_certain_element_table_4_red">-300</td>
-                                <td class="resource_main_certain_element_table_5"><span>01.12.2020</span><img src="../assets/vector_pen.png" alt="pen"></td>
-                                <td class="resource_main_certain_element_table_6">1,00</td>
-                            </tr>
-
-
-                            <tr>
-                                <td class="resource_main_certain_element_table_1">Палец</td>
-                                <td class="resource_main_certain_element_table_2">7 500,00</td>
-                                <td class="resource_main_certain_element_table_3">16 000,00</td>
-                                <td class="resource_main_certain_element_table_4 resource_main_certain_element_table_4_red">-300</td>
-                                <td class="resource_main_certain_element_table_5"><span>02.12.2020</span><img src="../assets/vector_pen.png" alt="pen"></td>
-                                <td class="resource_main_certain_element_table_6">1,00</td>
-                            </tr>
-
-
-
-                            <tr>
-                                <td class="resource_main_certain_element_table_1">Кольца</td>
-                                <td class="resource_main_certain_element_table_2">7 500,00</td>
-                                <td class="resource_main_certain_element_table_3">16 000,00</td>
-                                <td class="resource_main_certain_element_table_4 resource_main_certain_element_table_4_yellow">300</td>
-                                <td class="resource_main_certain_element_table_5"><span>03.12.2020</span><img src="../assets/vector_pen.png" alt="pen"></td>
-                                <td class="resource_main_certain_element_table_6">1,00</td>
-                            </tr>
-
-
-                            <tr>
-                                <td class="resource_main_certain_element_table_1">Кольца</td>
-                                <td class="resource_main_certain_element_table_2">7 500,00</td>
-                                <td class="resource_main_certain_element_table_3">16 000,00</td>
-                                <td class="resource_main_certain_element_table_4 resource_main_certain_element_table_4_red">-2000</td>
-                                <td class="resource_main_certain_element_table_5"><span>04.12.2020</span><img src="../assets/vector_pen.png" alt="pen"></td>
-                                <td class="resource_main_certain_element_table_6">1,00</td>
-                            </tr>
-
-
-                            
-                        </table>
-
-
-                        <div class="resource_main_certain_element_add">
-                            <img src="../assets/vector_plus.png" alt="plus"><span> Добавить запчасть</span>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-
-                <div class="resource_main_elements">
-                    <img src="../assets/arrow_down.png" alt="arrow_down" @click="openElementDetais">
-                    <p @click="openElementDetais">Расходники</p>
-
-                    <div class="resource_main_certain_elements">
-                    <div class="resource_main_certain_element">
-                        <p>Поршневая группа</p>
-
-                        <table class="resource_main_certain_element_table">
-                            <tr>
-                                <th class="resource_main_certain_element_table_1">Наименование запчасти</th>
-                                <th class="resource_main_certain_element_table_2">Текующая наработка</th>
-                                <th class="resource_main_certain_element_table_3">Срок службы</th>
-                                <th class="resource_main_certain_element_table_4">Остаточный ресурс</th>
-                                <th class="resource_main_certain_element_table_5">Дата последнего ремонта</th>
-                                <th class="resource_main_certain_element_table_6">Кол-во замен</th>
-                            </tr>
-
-                            <tr>
-                                <td class="resource_main_certain_element_table_1">Поршень</td>
-                                <td class="resource_main_certain_element_table_2">7 500,00</td>
-                                <td class="resource_main_certain_element_table_3">16 000,00</td>
-                                <td class="resource_main_certain_element_table_4 resource_main_certain_element_table_4_red">-300</td>
-                                <td class="resource_main_certain_element_table_5"><span>01.12.2020</span><img src="../assets/vector_pen.png" alt="pen"></td>
-                                <td class="resource_main_certain_element_table_6">1,00</td>
-                            </tr>
-
-
-                            <tr>
-                                <td class="resource_main_certain_element_table_1">Палец</td>
-                                <td class="resource_main_certain_element_table_2">7 500,00</td>
-                                <td class="resource_main_certain_element_table_3">16 000,00</td>
-                                <td class="resource_main_certain_element_table_4 resource_main_certain_element_table_4_red">-300</td>
-                                <td class="resource_main_certain_element_table_5"><span>02.12.2020</span><img src="../assets/vector_pen.png" alt="pen"></td>
-                                <td class="resource_main_certain_element_table_6">1,00</td>
-                            </tr>
-
-
-
-                            <tr>
-                                <td class="resource_main_certain_element_table_1">Кольца</td>
-                                <td class="resource_main_certain_element_table_2">7 500,00</td>
-                                <td class="resource_main_certain_element_table_3">16 000,00</td>
-                                <td class="resource_main_certain_element_table_4 resource_main_certain_element_table_4_yellow">300</td>
-                                <td class="resource_main_certain_element_table_5"><span>03.12.2020</span><img src="../assets/vector_pen.png" alt="pen"></td>
-                                <td class="resource_main_certain_element_table_6">1,00</td>
-                            </tr>
-
-
-                            <tr>
-                                <td class="resource_main_certain_element_table_1">Кольца</td>
-                                <td class="resource_main_certain_element_table_2">7 500,00</td>
-                                <td class="resource_main_certain_element_table_3">16 000,00</td>
-                                <td class="resource_main_certain_element_table_4 resource_main_certain_element_table_4_red">-2000</td>
-                                <td class="resource_main_certain_element_table_5"><span>04.12.2020</span><img src="../assets/vector_pen.png" alt="pen"></td>
-                                <td class="resource_main_certain_element_table_6">1,00</td>
-                            </tr>
-
-
-                            
-                        </table>
-
-
-                        <div class="resource_main_certain_element_add">
-                            <img src="../assets/vector_plus.png" alt="plus"><span> Добавить запчасть</span>
-                        </div>
-                    </div>
-
-
-                    <div class="resource_main_certain_element">
-                        <p>Головка блока цилиндров</p>
-
-                        <table class="resource_main_certain_element_table">
-                            <tr>
-                                <th class="resource_main_certain_element_table_1">Наименование запчасти</th>
-                                <th class="resource_main_certain_element_table_2">Текующая наработка</th>
-                                <th class="resource_main_certain_element_table_3">Срок службы</th>
-                                <th class="resource_main_certain_element_table_4">Остаточный ресурс</th>
-                                <th class="resource_main_certain_element_table_5">Дата последнего ремонта</th>
-                                <th class="resource_main_certain_element_table_6">Кол-во замен</th>
-                            </tr>
-
-                            <tr>
-                                <td class="resource_main_certain_element_table_1">Поршень</td>
-                                <td class="resource_main_certain_element_table_2">7 500,00</td>
-                                <td class="resource_main_certain_element_table_3">16 000,00</td>
-                                <td class="resource_main_certain_element_table_4 resource_main_certain_element_table_4_red">-300</td>
-                                <td class="resource_main_certain_element_table_5"><span>01.12.2020</span><img src="../assets/vector_pen.png" alt="pen"></td>
-                                <td class="resource_main_certain_element_table_6">1,00</td>
-                            </tr>
-
-
-                            <tr>
-                                <td class="resource_main_certain_element_table_1">Палец</td>
-                                <td class="resource_main_certain_element_table_2">7 500,00</td>
-                                <td class="resource_main_certain_element_table_3">16 000,00</td>
-                                <td class="resource_main_certain_element_table_4 resource_main_certain_element_table_4_red">-300</td>
-                                <td class="resource_main_certain_element_table_5"><span>02.12.2020</span><img src="../assets/vector_pen.png" alt="pen"></td>
-                                <td class="resource_main_certain_element_table_6">1,00</td>
-                            </tr>
-
-
-
-                            <tr>
-                                <td class="resource_main_certain_element_table_1">Кольца</td>
-                                <td class="resource_main_certain_element_table_2">7 500,00</td>
-                                <td class="resource_main_certain_element_table_3">16 000,00</td>
-                                <td class="resource_main_certain_element_table_4 resource_main_certain_element_table_4_yellow">300</td>
-                                <td class="resource_main_certain_element_table_5"><span>03.12.2020</span><img src="../assets/vector_pen.png" alt="pen"></td>
-                                <td class="resource_main_certain_element_table_6">1,00</td>
-                            </tr>
-
-
-                            <tr>
-                                <td class="resource_main_certain_element_table_1">Кольца</td>
-                                <td class="resource_main_certain_element_table_2">7 500,00</td>
-                                <td class="resource_main_certain_element_table_3">16 000,00</td>
-                                <td class="resource_main_certain_element_table_4 resource_main_certain_element_table_4_red">-2000</td>
-                                <td class="resource_main_certain_element_table_5"><span>04.12.2020</span><img src="../assets/vector_pen.png" alt="pen"></td>
-                                <td class="resource_main_certain_element_table_6">1,00</td>
-                            </tr>
-
-
-                            
-                        </table>
-
-
-                        <div class="resource_main_certain_element_add">
-                            <img src="../assets/vector_plus.png" alt="plus"><span> Добавить запчасть</span>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-
-                <div class="resource_main_elements">
-                    <img src="../assets/arrow_down.png" alt="arrow_down" @click="openElementDetais">
-                    <p @click="openElementDetais">Гидравлика</p>
-
-                    <div class="resource_main_certain_elements">
-                    <div class="resource_main_certain_element">
-                        <p>Поршневая группа</p>
-
-                        <table class="resource_main_certain_element_table">
-                            <tr>
-                                <th class="resource_main_certain_element_table_1">Наименование запчасти</th>
-                                <th class="resource_main_certain_element_table_2">Текующая наработка</th>
-                                <th class="resource_main_certain_element_table_3">Срок службы</th>
-                                <th class="resource_main_certain_element_table_4">Остаточный ресурс</th>
-                                <th class="resource_main_certain_element_table_5">Дата последнего ремонта</th>
-                                <th class="resource_main_certain_element_table_6">Кол-во замен</th>
-                            </tr>
-
-                            <tr>
-                                <td class="resource_main_certain_element_table_1">Поршень</td>
-                                <td class="resource_main_certain_element_table_2">7 500,00</td>
-                                <td class="resource_main_certain_element_table_3">16 000,00</td>
-                                <td class="resource_main_certain_element_table_4 resource_main_certain_element_table_4_red">-300</td>
-                                <td class="resource_main_certain_element_table_5"><span>01.12.2020</span><img src="../assets/vector_pen.png" alt="pen"></td>
-                                <td class="resource_main_certain_element_table_6">1,00</td>
-                            </tr>
-
-
-                            <tr>
-                                <td class="resource_main_certain_element_table_1">Палец</td>
-                                <td class="resource_main_certain_element_table_2">7 500,00</td>
-                                <td class="resource_main_certain_element_table_3">16 000,00</td>
-                                <td class="resource_main_certain_element_table_4 resource_main_certain_element_table_4_red">-300</td>
-                                <td class="resource_main_certain_element_table_5"><span>02.12.2020</span><img src="../assets/vector_pen.png" alt="pen"></td>
-                                <td class="resource_main_certain_element_table_6">1,00</td>
-                            </tr>
-
-
-
-                            <tr>
-                                <td class="resource_main_certain_element_table_1">Кольца</td>
-                                <td class="resource_main_certain_element_table_2">7 500,00</td>
-                                <td class="resource_main_certain_element_table_3">16 000,00</td>
-                                <td class="resource_main_certain_element_table_4 resource_main_certain_element_table_4_yellow">300</td>
-                                <td class="resource_main_certain_element_table_5"><span>03.12.2020</span><img src="../assets/vector_pen.png" alt="pen"></td>
-                                <td class="resource_main_certain_element_table_6">1,00</td>
-                            </tr>
-
-
-                            <tr>
-                                <td class="resource_main_certain_element_table_1">Кольца</td>
-                                <td class="resource_main_certain_element_table_2">7 500,00</td>
-                                <td class="resource_main_certain_element_table_3">16 000,00</td>
-                                <td class="resource_main_certain_element_table_4 resource_main_certain_element_table_4_red">-2000</td>
-                                <td class="resource_main_certain_element_table_5"><span>04.12.2020</span><img src="../assets/vector_pen.png" alt="pen"></td>
-                                <td class="resource_main_certain_element_table_6">1,00</td>
-                            </tr>
-
-
-                            
-                        </table>
-
-
-                        <div class="resource_main_certain_element_add">
-                            <img src="../assets/vector_plus.png" alt="plus"><span> Добавить запчасть</span>
-                        </div>
-                    </div>
-
-
-                    <div class="resource_main_certain_element">
-                        <p>Головка блока цилиндров</p>
-
-                        <table class="resource_main_certain_element_table">
-                            <tr>
-                                <th class="resource_main_certain_element_table_1">Наименование запчасти</th>
-                                <th class="resource_main_certain_element_table_2">Текующая наработка</th>
-                                <th class="resource_main_certain_element_table_3">Срок службы</th>
-                                <th class="resource_main_certain_element_table_4">Остаточный ресурс</th>
-                                <th class="resource_main_certain_element_table_5">Дата последнего ремонта</th>
-                                <th class="resource_main_certain_element_table_6">Кол-во замен</th>
-                            </tr>
-
-                            <tr>
-                                <td class="resource_main_certain_element_table_1">Поршень</td>
-                                <td class="resource_main_certain_element_table_2">7 500,00</td>
-                                <td class="resource_main_certain_element_table_3">16 000,00</td>
-                                <td class="resource_main_certain_element_table_4 resource_main_certain_element_table_4_red">-300</td>
-                                <td class="resource_main_certain_element_table_5"><span>01.12.2020</span><img src="../assets/vector_pen.png" alt="pen"></td>
-                                <td class="resource_main_certain_element_table_6">1,00</td>
-                            </tr>
-
-
-                            <tr>
-                                <td class="resource_main_certain_element_table_1">Палец</td>
-                                <td class="resource_main_certain_element_table_2">7 500,00</td>
-                                <td class="resource_main_certain_element_table_3">16 000,00</td>
-                                <td class="resource_main_certain_element_table_4 resource_main_certain_element_table_4_red">-300</td>
-                                <td class="resource_main_certain_element_table_5"><span>02.12.2020</span><img src="../assets/vector_pen.png" alt="pen"></td>
-                                <td class="resource_main_certain_element_table_6">1,00</td>
-                            </tr>
-
-
-
-                            <tr>
-                                <td class="resource_main_certain_element_table_1">Кольца</td>
-                                <td class="resource_main_certain_element_table_2">7 500,00</td>
-                                <td class="resource_main_certain_element_table_3">16 000,00</td>
-                                <td class="resource_main_certain_element_table_4 resource_main_certain_element_table_4_yellow">300</td>
-                                <td class="resource_main_certain_element_table_5"><span>03.12.2020</span><img src="../assets/vector_pen.png" alt="pen"></td>
-                                <td class="resource_main_certain_element_table_6">1,00</td>
-                            </tr>
-
-
-                            <tr>
-                                <td class="resource_main_certain_element_table_1">Кольца</td>
-                                <td class="resource_main_certain_element_table_2">7 500,00</td>
-                                <td class="resource_main_certain_element_table_3">16 000,00</td>
-                                <td class="resource_main_certain_element_table_4 resource_main_certain_element_table_4_red">-2000</td>
-                                <td class="resource_main_certain_element_table_5"><span>04.12.2020</span><img src="../assets/vector_pen.png" alt="pen"></td>
-                                <td class="resource_main_certain_element_table_6">1,00</td>
-                            </tr>
-
-
-                            
-                        </table>
-
-
-                        <div class="resource_main_certain_element_add">
-                            <img src="../assets/vector_plus.png" alt="plus"><span> Добавить запчасть</span>
-                        </div>
-                    </div>
-                    </div>
-                </div>
+                
             </div>
 
 
@@ -788,6 +131,94 @@
 <script>
 export default {
     name: 'resource',
+    data() {
+        return{
+            spent: {
+                1:{id:1,name:'Поршень',group:'ДВС',srok: 2100,stay:-300}, 
+                2:{id:2,name:'Поршень',group:'ДВС',srok:1000,stay:-1000},
+                3:{id:3,name:'Кулак',group:'Ходовая',srok:3000,stay:300},
+                4:{id:4,name:'Вал',group:'АКПП',srok:5000, stay:-2000},
+                },
+            tools: {
+                'Двигатель':{
+                    details:{
+                        'Поршневая группа':[
+                            {name:'Поршень', now: '7 500,00', life: '16 000,00', left: -300, data: '01.12.2020', replace:1},
+                            {name:'Палец', now: '7 500,00', life: '16 000,00', left: -300, data: '02.12.2020', replace:1},
+                            {name:'Кольца', now: '7 500,00', life: '16 000,00', left: 300, data: '03.12.2020', replace:1},
+                            {name:'Кольца', now: '7 500,00', life: '16 000,00', left: -2000, data: '04.12.2020', replace:1},
+                        ],
+                        'Головка блока цилиндров':[
+                            {name:'Поршень', now: '7 500,00', life: '16 000,00', left: -300, data: '01.12.2020', replace:1},
+                            {name:'Палец', now: '7 500,00', life: '16 000,00', left: -300, data: '02.12.2020', replace:1},
+                            {name:'Кольца', now: '7 500,00', life: '16 000,00', left: 300, data: '03.12.2020', replace:1},
+                            {name:'Кольца', now: '7 500,00', life: '16 000,00', left: -2000, data: '04.12.2020', replace:1},
+                        ],
+                    }
+                },
+                'Ходовая':{
+                    details:{
+                    'Поршневая группа':[
+                        {name:'Поршень', now: '7 500,00', life: '16 000,00', left: -300, data: '01.12.2020', replace:1},
+                        {name:'Палец', now: '7 500,00', life: '16 000,00', left: -300, data: '02.12.2020', replace:1},
+                        {name:'Кольца', now: '7 500,00', life: '16 000,00', left: 300, data: '03.12.2020', replace:1},
+                        {name:'Кольца', now: '7 500,00', life: '16 000,00', left: -2000, data: '04.12.2020', replace:1},
+                    ],
+                    'Головка блока цилиндров':[
+                        {name:'Поршень', now: '7 500,00', life: '16 000,00', left: -300, data: '01.12.2020', replace:1},
+                        {name:'Палец', now: '7 500,00', life: '16 000,00', left: -300, data: '02.12.2020', replace:1},
+                        {name:'Кольца', now: '7 500,00', life: '16 000,00', left: 300, data: '03.12.2020', replace:1},
+                        {name:'Кольца', now: '7 500,00', life: '16 000,00', left: -2000, data: '04.12.2020', replace:1},
+                    ],}
+                },
+                'Коробка':{
+                    details:{
+                    'Поршневая группа':[
+                        {name:'Поршень', now: '7 500,00', life: '16 000,00', left: -300, data: '01.12.2020', replace:1},
+                        {name:'Палец', now: '7 500,00', life: '16 000,00', left: -300, data: '02.12.2020', replace:1},
+                        {name:'Кольца', now: '7 500,00', life: '16 000,00', left: 300, data: '03.12.2020', replace:1},
+                        {name:'Кольца', now: '7 500,00', life: '16 000,00', left: -2000, data: '04.12.2020', replace:1},
+                    ],
+                    'Головка блока цилиндров':[
+                        {name:'Поршень', now: '7 500,00', life: '16 000,00', left: -300, data: '01.12.2020', replace:1},
+                        {name:'Палец', now: '7 500,00', life: '16 000,00', left: -300, data: '02.12.2020', replace:1},
+                        {name:'Кольца', now: '7 500,00', life: '16 000,00', left: 300, data: '03.12.2020', replace:1},
+                        {name:'Кольца', now: '7 500,00', life: '16 000,00', left: -2000, data: '04.12.2020', replace:1},
+                    ],}
+                },
+                'Расходники':{
+                    details:{
+                    'Поршневая группа':[
+                        {name:'Поршень', now: '7 500,00', life: '16 000,00', left: -300, data: '01.12.2020', replace:1},
+                        {name:'Палец', now: '7 500,00', life: '16 000,00', left: -300, data: '02.12.2020', replace:1},
+                        {name:'Кольца', now: '7 500,00', life: '16 000,00', left: 300, data: '03.12.2020', replace:1},
+                        {name:'Кольца', now: '7 500,00', life: '16 000,00', left: -2000, data: '04.12.2020', replace:1},
+                    ],
+                    'Головка блока цилиндров':[
+                        {name:'Поршень', now: '7 500,00', life: '16 000,00', left: -300, data: '01.12.2020', replace:1},
+                        {name:'Палец', now: '7 500,00', life: '16 000,00', left: -300, data: '02.12.2020', replace:1},
+                        {name:'Кольца', now: '7 500,00', life: '16 000,00', left: 300, data: '03.12.2020', replace:1},
+                        {name:'Кольца', now: '7 500,00', life: '16 000,00', left: -2000, data: '04.12.2020', replace:1},
+                    ],}
+                },
+                'Гидравлика':{
+                    details:{
+                    'Поршневая группа':[
+                        {name:'Поршень', now: '7 500,00', life: '16 000,00', left: -300, data: '01.12.2020', replace:1},
+                        {name:'Палец', now: '7 500,00', life: '16 000,00', left: -300, data: '02.12.2020', replace:1},
+                        {name:'Кольца', now: '7 500,00', life: '16 000,00', left: 300, data: '03.12.2020', replace:1},
+                        {name:'Кольца', now: '7 500,00', life: '16 000,00', left: -2000, data: '04.12.2020', replace:1},
+                    ],
+                    'Головка блока цилиндров':[
+                        {name:'Поршень', now: '7 500,00', life: '16 000,00', left: -300, data: '01.12.2020', replace:1},
+                        {name:'Палец', now: '7 500,00', life: '16 000,00', left: -300, data: '02.12.2020', replace:1},
+                        {name:'Кольца', now: '7 500,00', life: '16 000,00', left: 300, data: '03.12.2020', replace:1},
+                        {name:'Кольца', now: '7 500,00', life: '16 000,00', left: -2000, data: '04.12.2020', replace:1},
+                    ],}
+                }
+            }
+        }
+    },
     methods: {
         openElementDetais(event){
             if(event.target.parentNode.childNodes[2].classList[1] == ('resource_main_certain_elements_new')){

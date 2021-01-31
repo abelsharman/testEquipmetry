@@ -171,7 +171,7 @@
             <img src="../assets/vector_danger.png" alt="danger">
             <small>5 предупреждений</small>
             <img class="elements_first_row_3_1" src="../assets/ellipse.png" alt="el">
-            <img class="elements_first_row_3_2" src="../assets/ellipse_blue.png" alt="el">
+            <img class="elements_first_row_3_2" src="../assets/ellipse_red.png" alt="el">
           </div>
         
         
@@ -378,7 +378,7 @@ export default {
     vertical-align: top;
   }
   .header_user{
-    margin-left: 4%;
+    margin-left: 2%;
     display: inline-block;
   }
   .header_user_img {

@@ -203,7 +203,14 @@
 export default {
     name: 'Engine',
     //list: ['Двигатель в сбор', 'Поршневая группа', 'Головка блока цилиндров (ГБЦ)', 'Блок цилиндров', 'Каленвал', 'Масляный насос', 'Датчики', 'Топливная система', 'Фильтра', 'Передняя крышка ДВС', 'Маховик', 'Навесное оборудование', 'Фильтра', 'Наборы прокладок']
-    methods: {
+    data(){
+        return{
+            
+               
+        }
+    },
+
+   methods: {
         selectOneOfList(event){
             for(let i = 1; i < event.target.parentNode.children.length; i++){
                 if(event.target.parentNode.childNodes[i].innerHTML == event.target.innerHTML){
