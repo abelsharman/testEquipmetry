@@ -64,6 +64,18 @@
                 <p>Фильтра</p>
                 <p>Наборы прокладок</p>
             </div>
+
+
+            <div class="engine_inner_big_image">
+                <img src="../assets/details.png" alt="details">
+            </div>
+
+
+            <div class="engine_inner_details">
+                <table>
+
+                </table>
+            </div>
         </div>
         
     </div>
@@ -93,6 +105,7 @@ export default {
         padding-left: 0px;
     }
     .engine_inner_list{
+        display: inline-block;
         margin-top: 20px;
         width: 309px;
         height: auto;
@@ -121,6 +134,34 @@ export default {
         padding-bottom: 12px;
         padding-top: 10px;
         margin: 0;
+    }
+    .engine_inner_big_image{
+        display: inline-block;
+        vertical-align: top;
+        width: 465px;
+        margin: 13px 0 0 21px;
+        height: 453px;
+        border-radius: 8%;
+        filter: drop-shadow(0px 2px 10px rgba(0, 0, 0, 0.1));
+    }
+    .engine_inner_big_image img{
+        border-radius:8%;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+    }
+
+
+
+    .engine_inner_details{
+        display: inline-block;
+        height: 356px;
+        width: 566px;
+        border-radius: 7px;
+        background: #FFFFFF;
+        box-shadow: 0px 1px 10px 1px rgba(0, 0, 0, 0.1);
+        vertical-align: top;
+        margin: 21px 0 0 21px;
     }
 
 </style>
