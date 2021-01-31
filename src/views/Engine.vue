@@ -49,20 +49,20 @@
 
             <div class="engine_inner_list">
                 <h3>Двигатель</h3>
-                <p>Двигатель в сбор</p>
-                <p>Поршневая группа</p>
-                <p>Головка блока цилиндров (ГБЦ)</p>
-                <p>Блок цилиндров</p>
-                <p>Каленвал</p>
-                <p>Масляный насос</p>
-                <p>Датчики</p>
-                <p>Топливная система</p>
-                <p>Фильтра</p>
-                <p>Передняя крышка ДВС</p>
-                <p>Маховик</p>
-                <p>Навесное оборудование</p>
-                <p>Фильтра</p>
-                <p>Наборы прокладок</p>
+                <p @click="selectOneOfList">Двигатель в сбор</p>
+                <p @click="selectOneOfList">Поршневая группа</p>
+                <p @click="selectOneOfList">Головка блока цилиндров (ГБЦ)</p>
+                <p @click="selectOneOfList">Блок цилиндров</p>
+                <p @click="selectOneOfList">Каленвал</p>
+                <p @click="selectOneOfList">Масляный насос</p>
+                <p @click="selectOneOfList">Датчики</p>
+                <p @click="selectOneOfList">Топливная система</p>
+                <p @click="selectOneOfList">Фильтра</p>
+                <p @click="selectOneOfList">Передняя крышка ДВС</p>
+                <p @click="selectOneOfList">Маховик</p>
+                <p @click="selectOneOfList">Навесное оборудование</p>
+                <p @click="selectOneOfList">Фильтра</p>
+                <p @click="selectOneOfList">Наборы прокладок</p>
             </div>
 
 
@@ -202,6 +202,21 @@
 <script>
 export default {
     name: 'Engine',
+    //list: ['Двигатель в сбор', 'Поршневая группа', 'Головка блока цилиндров (ГБЦ)', 'Блок цилиндров', 'Каленвал', 'Масляный насос', 'Датчики', 'Топливная система', 'Фильтра', 'Передняя крышка ДВС', 'Маховик', 'Навесное оборудование', 'Фильтра', 'Наборы прокладок']
+    methods: {
+        selectOneOfList(event){
+            for(let i = 1; i < event.target.parentNode.children.length; i++){
+                if(event.target.parentNode.childNodes[i].innerHTML == event.target.innerHTML){
+                    event.target.style.color = '#5188E7'
+                    event.target.parentNode.parentNode.childNodes[3].style.display = 'inline-block'
+                    event.target.parentNode.parentNode.childNodes[4].style.display = 'inline-block'
+                }
+                else{
+                    event.target.parentNode.childNodes[i].style.color = '#3C4858'
+                }
+            }
+        }
+    },
 }
 </script>
 
@@ -299,6 +314,8 @@ export default {
         padding-bottom: 12px;
         padding-top: 10px;
         margin: 0;
+        cursor: pointer;
+        transition: 0.3s all ease;
     }
     .engine_inner_big_image{
         display: inline-block;
@@ -308,6 +325,7 @@ export default {
         height: 453px;
         border-radius: 8%;
         filter: drop-shadow(0px 2px 10px rgba(0, 0, 0, 0.1));
+        display: none;
     }
     .engine_inner_big_image img{
         border-radius:8%;
@@ -331,6 +349,7 @@ export default {
         border-radius: 7px;
         vertical-align: top;
         margin: 21px 0 0 21px;
+        display: none;
     }
     .engine_inner_details button{
         background: #4379D6;
