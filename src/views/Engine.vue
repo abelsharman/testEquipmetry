@@ -70,11 +70,129 @@
                 <img src="../assets/details.png" alt="details">
             </div>
 
-
             <div class="engine_inner_details">
+            <div class="engine_inner_details_inner">
                 <table>
+                    <tr>
+                        <th class="engine_inner_detail_1"></th>
+                        <th class="engine_inner_detail_2">№</th>
+                        <th class="engine_inner_detail_3">Наименование запчасти</th>
+                        <th class="engine_inner_detail_4">Номер запчасти</th>
+                        <th class="engine_inner_detail_5">Кол-во</th>
+                        <th class="engine_inner_detail_6">Ресурсность</th>
+                    </tr>
 
+
+
+                    <tr>
+                        <td class="engine_inner_detail_1">
+                            <label class="input_check">
+                                <input type="checkbox" checked="checked">
+                                <span class="checkmark"></span>
+                            </label>
+                        </td>
+                        <td class="engine_inner_detail_2">1</td>
+                        <td class="engine_inner_detail_3">Поршень</td>
+                        <td class="engine_inner_detail_4">256-6325</td>
+                        <td class="engine_inner_detail_5">12</td>
+                        <td class="engine_inner_detail_6 engine_inner_detail_6_green">12000</td>
+                    </tr>
+
+
+                    <tr>
+                        <td class="engine_inner_detail_1">
+                            <label class="input_check">
+                                <input type="checkbox" checked="checked">
+                                <span class="checkmark"></span>
+                            </label>
+                        </td>
+                        <td class="engine_inner_detail_2">2</td>
+                        <td class="engine_inner_detail_3">Палец поршня</td>
+                        <td class="engine_inner_detail_4">256-6325</td>
+                        <td class="engine_inner_detail_5">10</td>
+                        <td class="engine_inner_detail_6 engine_inner_detail_6_green">12000</td>
+                    </tr>
+
+
+
+                    <tr>
+                        <td class="engine_inner_detail_1">
+                            <label class="input_check">
+                                <input type="checkbox" checked="checked">
+                                <span class="checkmark"></span>
+                            </label>
+                        </td>
+                        <td class="engine_inner_detail_2">3</td>
+                        <td class="engine_inner_detail_3">Кольцо стопорное пальца</td>
+                        <td class="engine_inner_detail_4">256-6325</td>
+                        <td class="engine_inner_detail_5">1</td>
+                        <td class="engine_inner_detail_6 engine_inner_detail_6_green">12000</td>
+                    </tr>
+
+
+
+                    <tr>
+                        <td class="engine_inner_detail_1">
+                            <label class="input_check">
+                                <input type="checkbox" checked="checked">
+                                <span class="checkmark"></span>
+                            </label></td>
+                        <td class="engine_inner_detail_2">4</td>
+                        <td class="engine_inner_detail_3">Кольцо маслосъемное </td>
+                        <td class="engine_inner_detail_4">256-6325</td>
+                        <td class="engine_inner_detail_5">2</td>
+                        <td class="engine_inner_detail_6 engine_inner_detail_6_green">12000</td>
+                    </tr>
+
+
+                    <tr>
+                        <td class="engine_inner_detail_1">
+                            <label class="input_check">
+                                <input type="checkbox" checked="checked">
+                                <span class="checkmark"></span>
+                            </label>
+                        </td>
+                        <td class="engine_inner_detail_2">2</td>
+                        <td class="engine_inner_detail_3">Кольцо компрессионное верхняя </td>
+                        <td class="engine_inner_detail_4">256-6325</td>
+                        <td class="engine_inner_detail_5">4</td>
+                        <td class="engine_inner_detail_6 engine_inner_detail_6_green">12000</td>
+                    </tr>
+
+
+                    <tr>
+                        <td class="engine_inner_detail_1">
+                            <label class="input_check">
+                                <input type="checkbox" checked="checked">
+                                <span class="checkmark"></span>
+                            </label>
+                        </td>
+                        <td class="engine_inner_detail_2">3</td>
+                        <td class="engine_inner_detail_3">Шатун</td>
+                        <td class="engine_inner_detail_4">256-6325</td>
+                        <td class="engine_inner_detail_5">12</td>
+                        <td class="engine_inner_detail_6 engine_inner_detail_6_green">12000</td>
+                    </tr>
+
+
+
+                    <tr>
+                        <td class="engine_inner_detail_1">
+                            <label class="input_check">
+                                <input type="checkbox" checked="checked">
+                                <span class="checkmark"></span>
+                            </label>
+                        </td>
+                        <td class="engine_inner_detail_2">4</td>
+                        <td class="engine_inner_detail_3">Втулка шатуна</td>
+                        <td class="engine_inner_detail_4">256-6325</td>
+                        <td class="engine_inner_detail_5">10</td>
+                        <td class="engine_inner_detail_6 engine_inner_detail_6_green">12000</td>
+                    </tr>
                 </table>
+            </div>
+
+                <button type="submit">Сохранить</button>
             </div>
         </div>
         
@@ -88,6 +206,53 @@ export default {
 </script>
 
 <style>
+    .input_check {
+        position: relative;
+        cursor: pointer;
+    }
+
+    .input_check input {
+        opacity: 0;
+        cursor: pointer;
+    }
+
+    .checkmark {
+        position: absolute;
+        top: -1px;
+        left: 6px;
+        height: 15px;
+        width: 15px;
+        background-color: white;
+        border-radius: 2.5px;
+        border: 1px solid rgba(153, 153, 153, 0.5);
+    }
+
+    .input_check input:checked ~ .checkmark {
+        background-color: white;
+    }
+
+    .checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+    }
+
+    .input_check input:checked ~ .checkmark:after {
+        display: block;
+    }
+
+    .input_check .checkmark:after {
+        left: 5px;
+        top: 2px;
+        width: 3px;
+        height: 6px;
+        
+        border: solid #3C4858;
+        border-width: 0 2px 2px 0;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
     .engine_inner{
         padding-left: 28px;
         font-family: SF UI Text, sans-serif;
@@ -152,16 +317,101 @@ export default {
     }
 
 
+    .engine_inner_details_inner{
+        box-shadow: 0px 1px 10px 1px rgba(0, 0, 0, 0.1);
+        background: #FFFFFF;
+        height: 346px;
+        padding-top: 10px;
+        border-radius: 7px;
+    }
 
     .engine_inner_details{
         display: inline-block;
-        height: 356px;
         width: 566px;
         border-radius: 7px;
-        background: #FFFFFF;
-        box-shadow: 0px 1px 10px 1px rgba(0, 0, 0, 0.1);
         vertical-align: top;
         margin: 21px 0 0 21px;
+    }
+    .engine_inner_details button{
+        background: #4379D6;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
+        border-radius: 4px;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 17px;
+        color: #FFFFFF;
+        border: 0px;
+        padding: 12px 23.5px;
+        margin: 20px 0; 
+        float: right;
+        outline: none;
+        cursor: pointer;
+        transition: 0.3s all ease;
+    }
+    .engine_inner_details button:hover{
+        background-color: #316fdb
+    }
+
+    .engine_inner_details table{
+        border-collapse: collapse;
+        width: 97%;
+        margin-left: 2%;
+    }
+    .engine_inner_details tr{
+        height: 41px;
+        border-bottom: 1px solid #DADADA;
+    }
+    .engine_inner_details th{
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 100%;
+        color: #ADADAD;
+    }
+    .engine_inner_details td{
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 17px;
+        color: #3C4858;
+    }
+
+
+
+    .engine_inner_detail_1{
+        width: 20px;
+    }
+    .engine_inner_detail_1 input{
+        width: 100%;
+    }
+    .engine_inner_detail_1 input:checked{
+        background-color: lightgrey
+    }
+
+    .engine_inner_detail_2{
+        width: 44px;
+        text-align: center;
+    }
+    .engine_inner_detail_3{
+        width: 190px;
+        text-align: left;
+    }
+    .engine_inner_detail_4{
+        width: 110px;
+        text-align: right;
+    }
+    .engine_inner_detail_5{
+        width: 71px;
+        text-align: right;
+    }
+    .engine_inner_detail_6{
+        width: 108px;
+        text-align: right;
+        padding-right: 8px;
+    }
+    .engine_inner_details .engine_inner_detail_6_green{
+        color: #83C578;
     }
 
 </style>
