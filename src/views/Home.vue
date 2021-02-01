@@ -379,13 +379,14 @@ export default {
     display: none ;
     position: absolute !important;
     z-index: 9999 !important;
-    box-sizing: border-box;
+    box-sizing: border-box !important;
   }
   .for_2_date{
     left: 529px !important;
   }
   .vuejs3-datepicker__calendar-topbar{
     display: none;
+    box-sizing: border-box !important;
   }
   .vuejs3-datepicker__calendar-actionarea .cell{
     font-size: 1.1em;
@@ -396,6 +397,7 @@ export default {
     position: relative;
     font-size: 0.5em;
     display: none;
+    box-sizing: border-box !important;
   }
   .vuejs3-datepicker__value{
     font-size: 0.5em;
@@ -406,6 +408,7 @@ export default {
     position: relative;
     display: block;
     width: 200px;
+    box-sizing: border-box !important;
   }
   .vuejs3-datepicker .for_1_date, .vuejs3-datepicker .for_2_date{
     display: none;
