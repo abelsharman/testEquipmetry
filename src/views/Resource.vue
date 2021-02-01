@@ -103,8 +103,18 @@
                                 <td class="resource_main_certain_element_table_3">{{ detail.life }}</td>
                                 <td v-if="detail.left < 0" class="resource_main_certain_element_table_4 resource_main_certain_element_table_4_red">{{ detail.left }}</td>
                                 <td v-if="detail.left > 0" class="resource_main_certain_element_table_4 resource_main_certain_element_table_4_yellow">{{ detail.left }}</td>
-                                <td class="resource_main_certain_element_table_5"><span>{{ detail.data }}</span><img src="../assets/vector_pen.png" alt="pen"></td>
+                                <td class="resource_main_certain_element_table_5"><span>{{ detail.data }}</span><img @click="openForm" src="../assets/vector_pen.png" alt="pen"></td>
                                 <td class="resource_main_certain_element_table_6">{{ detail.replace }}</td>
+                                <div class="datepicker_block">
+                                    <datepicker class="datepicker_block_date" :inline='true' v-model="value1"></datepicker>
+                                    <div class="datepicker_form">
+                                        <p id="datepicker_form_p">Наработка на момент замены:</p>
+                                        <input class="datepicker_form_input" type="text">
+                                    </div>
+
+                                    <p @click="closeForm" id="datepicker_form_cancel">Отменить</p>
+                                    <button @click="submitForm" id="datepicker_form_button">Сохранить</button>
+                                </div>
                             </tr>
                         </table>
 
@@ -121,7 +131,7 @@
 
                 
             </div>
-
+          
 
         </div>
     </div>
@@ -129,6 +139,10 @@
 
 
 <script>
+import Datepicker from 'vuejs3-datepicker';
+import { ref } from 'vue';
+import moment from 'moment';
+
 export default {
     name: 'resource',
     data() {
@@ -143,83 +157,97 @@ export default {
                 'Двигатель':{
                     details:{
                         'Поршневая группа':[
-                            {name:'Поршень', now: '7 500,00', life: '16 000,00', left: -300, data: '01.12.2020', replace:1},
-                            {name:'Палец', now: '7 500,00', life: '16 000,00', left: -300, data: '02.12.2020', replace:1},
-                            {name:'Кольца', now: '7 500,00', life: '16 000,00', left: 300, data: '03.12.2020', replace:1},
-                            {name:'Кольца', now: '7 500,00', life: '16 000,00', left: -2000, data: '04.12.2020', replace:1},
+                            {name:'Поршень', now: '7500,00', life: '16 000,00', left: -300, data: '01.12.2020', replace:1},
+                            {name:'Палец', now: '7500,00', life: '16 000,00', left: -300, data: '02.12.2020', replace:1},
+                            {name:'Кольца', now: '7500,00', life: '16 000,00', left: 300, data: '03.12.2020', replace:1},
+                            {name:'Кольца', now: '7500,00', life: '16 000,00', left: -2000, data: '04.12.2020', replace:1},
                         ],
                         'Головка блока цилиндров':[
-                            {name:'Поршень', now: '7 500,00', life: '16 000,00', left: -300, data: '01.12.2020', replace:1},
-                            {name:'Палец', now: '7 500,00', life: '16 000,00', left: -300, data: '02.12.2020', replace:1},
-                            {name:'Кольца', now: '7 500,00', life: '16 000,00', left: 300, data: '03.12.2020', replace:1},
-                            {name:'Кольца', now: '7 500,00', life: '16 000,00', left: -2000, data: '04.12.2020', replace:1},
+                            {name:'Поршень', now: '7500,00', life: '16 000,00', left: -300, data: '01.12.2020', replace:1},
+                            {name:'Палец', now: '7500,00', life: '16 000,00', left: -300, data: '02.12.2020', replace:1},
+                            {name:'Кольца', now: '7500,00', life: '16 000,00', left: 300, data: '03.12.2020', replace:1},
+                            {name:'Кольца', now: '7500,00', life: '16 000,00', left: -2000, data: '04.12.2020', replace:1},
                         ],
                     }
                 },
                 'Ходовая':{
                     details:{
                     'Поршневая группа':[
-                        {name:'Поршень', now: '7 500,00', life: '16 000,00', left: -300, data: '01.12.2020', replace:1},
-                        {name:'Палец', now: '7 500,00', life: '16 000,00', left: -300, data: '02.12.2020', replace:1},
-                        {name:'Кольца', now: '7 500,00', life: '16 000,00', left: 300, data: '03.12.2020', replace:1},
-                        {name:'Кольца', now: '7 500,00', life: '16 000,00', left: -2000, data: '04.12.2020', replace:1},
+                        {name:'Поршень', now: '7500,00', life: '16 000,00', left: -300, data: '01.12.2020', replace:1},
+                        {name:'Палец', now: '7500,00', life: '16 000,00', left: -300, data: '02.12.2020', replace:1},
+                        {name:'Кольца', now: '7500,00', life: '16 000,00', left: 300, data: '03.12.2020', replace:1},
+                        {name:'Кольца', now: '7500,00', life: '16 000,00', left: -2000, data: '04.12.2020', replace:1},
                     ],
                     'Головка блока цилиндров':[
-                        {name:'Поршень', now: '7 500,00', life: '16 000,00', left: -300, data: '01.12.2020', replace:1},
-                        {name:'Палец', now: '7 500,00', life: '16 000,00', left: -300, data: '02.12.2020', replace:1},
-                        {name:'Кольца', now: '7 500,00', life: '16 000,00', left: 300, data: '03.12.2020', replace:1},
-                        {name:'Кольца', now: '7 500,00', life: '16 000,00', left: -2000, data: '04.12.2020', replace:1},
+                        {name:'Поршень', now: '7500,00', life: '16 000,00', left: -300, data: '01.12.2020', replace:1},
+                        {name:'Палец', now: '7500,00', life: '16 000,00', left: -300, data: '02.12.2020', replace:1},
+                        {name:'Кольца', now: '7500,00', life: '16 000,00', left: 300, data: '03.12.2020', replace:1},
+                        {name:'Кольца', now: '7500,00', life: '16 000,00', left: -2000, data: '04.12.2020', replace:1},
                     ],}
                 },
                 'Коробка':{
                     details:{
                     'Поршневая группа':[
-                        {name:'Поршень', now: '7 500,00', life: '16 000,00', left: -300, data: '01.12.2020', replace:1},
-                        {name:'Палец', now: '7 500,00', life: '16 000,00', left: -300, data: '02.12.2020', replace:1},
-                        {name:'Кольца', now: '7 500,00', life: '16 000,00', left: 300, data: '03.12.2020', replace:1},
-                        {name:'Кольца', now: '7 500,00', life: '16 000,00', left: -2000, data: '04.12.2020', replace:1},
+                        {name:'Поршень', now: '7500,00', life: '16 000,00', left: -300, data: '01.12.2020', replace:1},
+                        {name:'Палец', now: '7500,00', life: '16 000,00', left: -300, data: '02.12.2020', replace:1},
+                        {name:'Кольца', now: '7500,00', life: '16 000,00', left: 300, data: '03.12.2020', replace:1},
+                        {name:'Кольца', now: '7500,00', life: '16 000,00', left: -2000, data: '04.12.2020', replace:1},
                     ],
                     'Головка блока цилиндров':[
-                        {name:'Поршень', now: '7 500,00', life: '16 000,00', left: -300, data: '01.12.2020', replace:1},
-                        {name:'Палец', now: '7 500,00', life: '16 000,00', left: -300, data: '02.12.2020', replace:1},
-                        {name:'Кольца', now: '7 500,00', life: '16 000,00', left: 300, data: '03.12.2020', replace:1},
-                        {name:'Кольца', now: '7 500,00', life: '16 000,00', left: -2000, data: '04.12.2020', replace:1},
+                        {name:'Поршень', now: '7500,00', life: '16 000,00', left: -300, data: '01.12.2020', replace:1},
+                        {name:'Палец', now: '7500,00', life: '16 000,00', left: -300, data: '02.12.2020', replace:1},
+                        {name:'Кольца', now: '7500,00', life: '16 000,00', left: 300, data: '03.12.2020', replace:1},
+                        {name:'Кольца', now: '7500,00', life: '16 000,00', left: -2000, data: '04.12.2020', replace:1},
                     ],}
                 },
                 'Расходники':{
                     details:{
                     'Поршневая группа':[
-                        {name:'Поршень', now: '7 500,00', life: '16 000,00', left: -300, data: '01.12.2020', replace:1},
-                        {name:'Палец', now: '7 500,00', life: '16 000,00', left: -300, data: '02.12.2020', replace:1},
-                        {name:'Кольца', now: '7 500,00', life: '16 000,00', left: 300, data: '03.12.2020', replace:1},
-                        {name:'Кольца', now: '7 500,00', life: '16 000,00', left: -2000, data: '04.12.2020', replace:1},
+                        {name:'Поршень', now: '7500,00', life: '16 000,00', left: -300, data: '01.12.2020', replace:1},
+                        {name:'Палец', now: '7500,00', life: '16 000,00', left: -300, data: '02.12.2020', replace:1},
+                        {name:'Кольца', now: '7500,00', life: '16 000,00', left: 300, data: '03.12.2020', replace:1},
+                        {name:'Кольца', now: '7500,00', life: '16 000,00', left: -2000, data: '04.12.2020', replace:1},
                     ],
                     'Головка блока цилиндров':[
-                        {name:'Поршень', now: '7 500,00', life: '16 000,00', left: -300, data: '01.12.2020', replace:1},
-                        {name:'Палец', now: '7 500,00', life: '16 000,00', left: -300, data: '02.12.2020', replace:1},
-                        {name:'Кольца', now: '7 500,00', life: '16 000,00', left: 300, data: '03.12.2020', replace:1},
-                        {name:'Кольца', now: '7 500,00', life: '16 000,00', left: -2000, data: '04.12.2020', replace:1},
+                        {name:'Поршень', now: '7500,00', life: '16 000,00', left: -300, data: '01.12.2020', replace:1},
+                        {name:'Палец', now: '7500,00', life: '16 000,00', left: -300, data: '02.12.2020', replace:1},
+                        {name:'Кольца', now: '7500,00', life: '16 000,00', left: 300, data: '03.12.2020', replace:1},
+                        {name:'Кольца', now: '7500,00', life: '16 000,00', left: -2000, data: '04.12.2020', replace:1},
                     ],}
                 },
                 'Гидравлика':{
                     details:{
                     'Поршневая группа':[
-                        {name:'Поршень', now: '7 500,00', life: '16 000,00', left: -300, data: '01.12.2020', replace:1},
-                        {name:'Палец', now: '7 500,00', life: '16 000,00', left: -300, data: '02.12.2020', replace:1},
-                        {name:'Кольца', now: '7 500,00', life: '16 000,00', left: 300, data: '03.12.2020', replace:1},
-                        {name:'Кольца', now: '7 500,00', life: '16 000,00', left: -2000, data: '04.12.2020', replace:1},
+                        {name:'Поршень', now: '7500,00', life: '16 000,00', left: -300, data: '01.12.2020', replace:1},
+                        {name:'Палец', now: '7500,00', life: '16 000,00', left: -300, data: '02.12.2020', replace:1},
+                        {name:'Кольца', now: '7500,00', life: '16 000,00', left: 300, data: '03.12.2020', replace:1},
+                        {name:'Кольца', now: '7500,00', life: '16 000,00', left: -2000, data: '04.12.2020', replace:1},
                     ],
                     'Головка блока цилиндров':[
-                        {name:'Поршень', now: '7 500,00', life: '16 000,00', left: -300, data: '01.12.2020', replace:1},
-                        {name:'Палец', now: '7 500,00', life: '16 000,00', left: -300, data: '02.12.2020', replace:1},
-                        {name:'Кольца', now: '7 500,00', life: '16 000,00', left: 300, data: '03.12.2020', replace:1},
-                        {name:'Кольца', now: '7 500,00', life: '16 000,00', left: -2000, data: '04.12.2020', replace:1},
+                        {name:'Поршень', now: '7500,00', life: '16 000,00', left: -300, data: '01.12.2020', replace:1},
+                        {name:'Палец', now: '7500,00', life: '16 000,00', left: -300, data: '02.12.2020', replace:1},
+                        {name:'Кольца', now: '7500,00', life: '16 000,00', left: 300, data: '03.12.2020', replace:1},
+                        {name:'Кольца', now: '7500,00', life: '16 000,00', left: -2000, data: '04.12.2020', replace:1},
                     ],}
                 }
             }
         }
     },
+    components: {
+        Datepicker
+    },
+    setup(){
+      const value1 = ref(new Date())
+
+      return {value1}
+  },
     methods: {
+        openForm(event){
+            event.target.parentNode.parentNode.childNodes[7].style.display = 'block'
+        },
+        closeForm(event){
+            event.target.parentNode.style.display = 'none'
+        },
         openElementDetais(event){
             if(event.target.parentNode.childNodes[2].classList[1] == ('resource_main_certain_elements_new')){
                 event.target.parentNode.childNodes[2].classList.remove('resource_main_certain_elements_new')
@@ -243,7 +271,18 @@ export default {
             }
             //event.target.parentNode.childNodes[2].classList.add('resource_main_certain_elements_new')
             console.log(event.target.parentNode.childNodes[2].classList)
-        }
+        },
+        submitForm(event){          
+            event.target.parentNode.parentNode.childNodes[1].innerHTML = Number.parseInt(event.target.parentNode.parentNode.childNodes[1].innerHTML) - Number.parseInt(event.target.parentNode.childNodes[1].childNodes[1].value)
+            event.target.parentNode.parentNode.childNodes[5].childNodes[0].innerHTML = this.convertDate1
+            event.target.parentNode.parentNode.childNodes[6].innerHTML = Number.parseInt(event.target.parentNode.parentNode.childNodes[6].innerHTML) + 1
+            event.target.parentNode.style.display = 'none'
+        },
+    },
+    computed: {
+      convertDate1() {
+        return moment(this.value1).format('DD.MM.YYYY')
+      },
     }
 }
 </script>
@@ -493,4 +532,80 @@ export default {
         text-decoration: none;
     }
 
+
+
+    .datepicker_block{
+        display: none;
+        position: absolute;
+        width: 230px;
+        background: #FCFCFC;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        padding: 0 10px;
+        height: auto;
+        margin-top: 50px;
+        margin-left: -230px;
+
+    }
+    .datepicker_form{
+        display: block;
+        background-color: white;
+        width: 90%;
+        box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 4px;
+        margin-left: 5%;
+        margin-top: 20px;
+    }
+    #datepicker_form_p{
+        width: 115px;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 12px;
+        line-height: 14px;
+        color: #3C4858;
+        display: inline-block;
+        cursor: text;
+        vertical-align: middle;
+        margin: 0;
+    }
+    .datepicker_form .datepicker_form_input{
+        background: #FFFFFF;
+        box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 3px;
+        width: 64px;
+        margin-top: 11px;
+        margin-bottom: 7px;
+        height: 24px;
+        border: 0px;
+        display: inline-block;
+    }
+    #datepicker_form_cancel{
+        font-style: normal;
+        font-weight: normal;
+        font-size: 12px;
+        line-height: 14px;
+        color: #3C4858;
+        margin-left: 40px;
+        margin-top: 10px;
+        margin-right: 10px;
+    }
+    #datepicker_form_button{
+        width: 90px;
+        padding: 7px 0;
+        background: #5188E7;
+        border-radius: 3px;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 12px;
+        line-height: 14px;
+        color: #FFFFFF;
+        text-align: center;
+        margin-top: 10px;
+        margin-bottom: 12px;
+        
+        
+    }
+    .datepicker_block_date{
+        margin-left: 20px !important;
+    }
 </style>
