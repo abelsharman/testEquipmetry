@@ -113,8 +113,8 @@
           <span class="main_right_third_block_black">Выберите период: </span>
           <img src="../assets/vector_date.png" alt="date">
           <span class="main_right_third_block_blue"><span @click="openFirstForm">{{ convertDate1 }}</span> - <span @click="openSecondForm">{{ convertDate2 }}</span></span><br>
-          <datepicker class="for_1_date" v-model="defaultValue1" :inline='true' @click="closeForm" :monday-first='true' :iconWidth="width" :iconHeight="height" :minimum-view="'day'" :maximum-view="'day'"></datepicker>
-          <datepicker class="for_2_date" v-model="defaultValue2" :inline='true' @click="closeForm" :monday-first='true' :iconWidth="width" :iconHeight="height" :minimum-view="'day'" :maximum-view="'day'"></datepicker>
+          <datepicker class="for_1_date" id="firstForm" v-model="defaultValue1" :inline='true' @click="closeFirstForm" :monday-first='true' :iconWidth="width" :iconHeight="height" :minimum-view="'day'" :maximum-view="'day'"></datepicker>
+          <datepicker class="for_2_date" id="secondForm" v-model="defaultValue2" :inline='true' @click="closeSecondForm" :monday-first='true' :iconWidth="width" :iconHeight="height" :minimum-view="'day'" :maximum-view="'day'"></datepicker>
 
 
 
@@ -336,13 +336,14 @@ export default {
       const width = '0';
       const defaultValue1 = ref(new Date())
       const defaultValue2 = ref(new Date())
+      const defaultValue = ref(new Date())
       const highlighted = {
         dates: [
           new Date(2020, 11, 10),
           new Date(2020, 11, 21)
         ]
       };
-      return {width,height, highlighted, defaultValue1, defaultValue2}
+      return {width,height, highlighted, defaultValue1, defaultValue2, defaultValue}
   },
   data(){
     return{
@@ -354,14 +355,20 @@ export default {
   },
   methods:{
       openFirstForm(event){
-        event.target.parentNode.parentNode.childNodes[4].style.display = 'inline-block'
+        event.target.parentNode.parentNode.childNodes[4].style.display='inline-block'
       }, 
       openSecondForm(event){
-        event.target.parentNode.parentNode.childNodes[5].style.display = 'inline-block'
+        event.target.parentNode.parentNode.childNodes[5].style.display='inline-block'
       },
-      closeForm(event){
+      closeFirstForm(event){
+        this.firstForm = false
         event.target.parentNode.parentNode.parentNode.parentNode.style.display='none'
-      }
+      },
+      closeSecondForm(event){
+        this.secondForm = false
+        event.target.parentNode.parentNode.parentNode.parentNode.style.display='none'
+      },
+
   },
   computed: {
       convertDate1() {
@@ -370,13 +377,14 @@ export default {
       convertDate2() {
         return moment(this.defaultValue2).format('DD.MM.YYYY')
       },
-  },
+  }
 }
+
 </script>
 
 <style>
   .for_1_date, .for_2_date{
-    display: none ;
+    display: none;
     position: absolute !important;
     z-index: 9999 !important;
     box-sizing: border-box !important;
@@ -412,7 +420,9 @@ export default {
   }
   .vuejs3-datepicker .for_1_date, .vuejs3-datepicker .for_2_date{
     display: none;
+    box-sizing: border-box !important;
   }
+
 
   .vuejs3-datepicker__calendar-actionarea{
     font-size: 0.5em;
@@ -871,6 +881,7 @@ export default {
   }
   .main_right_third_block_blue{
     color: #5188E7;
+    cursor: pointer;
   }
   .main_right_third_block_1, .main_right_third_block_2, .main_right_third_block_3{
     display: inline-block;
