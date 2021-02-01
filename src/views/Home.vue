@@ -113,8 +113,8 @@
           <span class="main_right_third_block_black">Выберите период: </span>
           <img src="../assets/vector_date.png" alt="date">
           <span class="main_right_third_block_blue"><span @click="openFirstForm">{{ convertDate1 }}</span> - <span @click="openSecondForm">{{ convertDate2 }}</span></span><br>
-          <datepicker class="for_1_date" id="firstForm" v-model="defaultValue1" :inline='true' @click="closeFirstForm" :monday-first='true' :iconWidth="width" :iconHeight="height" :minimum-view="'day'" :maximum-view="'day'"></datepicker>
-          <datepicker class="for_2_date" id="secondForm" v-model="defaultValue2" :inline='true' @click="closeSecondForm" :monday-first='true' :iconWidth="width" :iconHeight="height" :minimum-view="'day'" :maximum-view="'day'"></datepicker>
+          <datepicker class="for_1_date" ref="firstForm" v-model="defaultValue1" style="display:none;" :inline='true' @click="closeFirstForm" :monday-first='true' :iconWidth="width" :iconHeight="height" :minimum-view="'day'" :maximum-view="'day'"></datepicker>
+          <datepicker class="for_2_date" ref="secondForm" v-model="defaultValue2" style="display:none;" :inline='true' @click="closeSecondForm" :monday-first='true' :iconWidth="width" :iconHeight="height" :minimum-view="'day'" :maximum-view="'day'"></datepicker>
 
 
 
@@ -361,11 +361,9 @@ export default {
         event.target.parentNode.parentNode.childNodes[5].style.display='inline-block'
       },
       closeFirstForm(event){
-        this.firstForm = false
         event.target.parentNode.parentNode.parentNode.parentNode.style.display='none'
       },
       closeSecondForm(event){
-        this.secondForm = false
         event.target.parentNode.parentNode.parentNode.parentNode.style.display='none'
       },
 
