@@ -406,10 +406,10 @@ export default {
     display: block;
     width: 200px;
   }
-
-  *{
-    box-sizing: initial ;
+  .vuejs3-datepicker .for_1_date, .vuejs3-datepicker .for_2_date{
+    display: none;
   }
+
   .vuejs3-datepicker__calendar-actionarea{
     font-size: 0.5em;
     width: 200px;
