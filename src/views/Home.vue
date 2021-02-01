@@ -397,7 +397,9 @@ export default {
     box-sizing: border-box !important;
   }
   .vuejs3-datepicker__calendar-actionarea .cell{
-    font-size: 1.1em;
+    font-size: 1.1em !important;
+    width: 12% !important;
+    padding: 0 1px !important;
     height:17px !important;
     line-height: 17px !important;
   }
