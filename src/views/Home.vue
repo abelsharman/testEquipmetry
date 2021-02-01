@@ -113,7 +113,10 @@
           <span class="main_right_third_block_black">Выберите период: </span>
           <img src="../assets/vector_date.png" alt="date">
           <span class="main_right_third_block_blue"><span @click="openFirstForm">{{ convertDate1 }}</span> - <span @click="openSecondForm">{{ convertDate2 }}</span></span><br>
-        
+          <datepicker class="for_1_date" v-model="defaultValue1" :inline='true' @click="closeForm" :monday-first='true' :iconWidth="width" :iconHeight="height" :minimum-view="'day'" :maximum-view="'day'"></datepicker>
+          <datepicker class="for_2_date" v-model="defaultValue2" :inline='true' @click="closeForm" :monday-first='true' :iconWidth="width" :iconHeight="height" :minimum-view="'day'" :maximum-view="'day'"></datepicker>
+
+
 
           <div class="main_right_third_block_1">
             <p>Количество простоев</p>
@@ -372,13 +375,13 @@ export default {
 </script>
 
 <style>
-  #for_1_date, #for_2_date{
-    display: none;
-    position: absolute ;
-    z-index: 9999 ;
+  .for_1_date, .for_2_date{
+    display: none ;
+    position: absolute !important;
+    z-index: 9999 !important;
   }
-  #for_2_date{
-    left: 529px;
+  .for_2_date{
+    left: 529px !important;
   }
   .vuejs3-datepicker__calendar-topbar{
     display: none;
@@ -403,8 +406,9 @@ export default {
     display: block;
     width: 200px;
   }
+
   *{
-    box-sizing: inherit;
+    box-sizing: initial ;
   }
   .vuejs3-datepicker__calendar-actionarea{
     font-size: 0.5em;
