@@ -4,6 +4,7 @@
   <router-view/>
 </template>
 
+
 <style>
 #app {
   font-family: Montserrat Alternates, sans-serif;

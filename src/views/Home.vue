@@ -112,7 +112,10 @@
         <div class="main_right_third_block">
           <span class="main_right_third_block_black">Выберите период: </span>
           <img src="../assets/vector_date.png" alt="date">
-          <span class="main_right_third_block_blue">01.12.2020 - 01.12.2020</span><br>
+          <span class="main_right_third_block_blue"><span @click="openFirstForm">{{ convertDate1 }}</span> - <span @click="openSecondForm">{{ convertDate2 }}</span></span><br>
+          <datepicker class="for_1_date" v-model="defaultValue1" :inline='true' @click="closeForm" :monday-first='true' :iconWidth="width" :iconHeight="height" :minimum-view="'day'" :maximum-view="'day'"></datepicker>
+          <datepicker class="for_2_date" v-model="defaultValue2" :inline='true' @click="closeForm" :monday-first='true' :iconWidth="width" :iconHeight="height" :minimum-view="'day'" :maximum-view="'day'"></datepicker>
+
 
 
           <div class="main_right_third_block_1">
@@ -248,7 +251,7 @@
           </div>
 
           <div class="calendar_first_row_2">
-            <p>Декабрь 2020 года</p>
+            <datepicker :value="defaultValue" :highlighted='highlighted' :inline='true' :monday-first='true' :iconWidth="width" :iconHeight="height" :minimum-view="'day'" :maximum-view="'day'"></datepicker>
           </div>
         </div>
 
@@ -311,7 +314,6 @@
 
       </div>
 
-
     </div>
 
 
@@ -324,14 +326,106 @@
 <script>
 // @ is an alias to /src
 //import HelloWorld from '@/components/HelloWorld.vue'
-
+import Datepicker from 'vuejs3-datepicker';
+import moment from 'moment';
+import { ref } from 'vue';
 export default {
   name: 'Home',
- 
+  setup(){
+      const height = '0';
+      const width = '0';
+      const defaultValue1 = ref(new Date())
+      const defaultValue2 = ref(new Date())
+      const highlighted = {
+        dates: [
+          new Date(2020, 11, 10),
+          new Date(2020, 11, 21)
+        ]
+      };
+      return {width,height, highlighted, defaultValue1, defaultValue2}
+  },
+  data(){
+    return{
+
+    }
+  },
+  components: {
+    Datepicker
+  },
+  methods:{
+      openFirstForm(event){
+        event.target.parentNode.parentNode.childNodes[4].style.display = 'inline-block'
+      }, 
+      openSecondForm(event){
+        event.target.parentNode.parentNode.childNodes[5].style.display = 'inline-block'
+      },
+      closeForm(event){
+        event.target.parentNode.parentNode.parentNode.parentNode.style.display='none'
+      }
+  },
+  computed: {
+      convertDate1() {
+        return moment(this.defaultValue1).format('DD.MM.YYYY')
+      },
+      convertDate2() {
+        return moment(this.defaultValue2).format('DD.MM.YYYY')
+      },
+  },
 }
 </script>
 
 <style>
+  .for_1_date, .for_2_date{
+    display: none;
+    position: absolute;
+    z-index: 9999;
+  }
+  .for_2_date{
+    left: 529px;
+  }
+  .vuejs3-datepicker__calendar-topbar{
+    display: none;
+  }
+  .vuejs3-datepicker__calendar-actionarea .cell{
+    font-size: 1.1em;
+    height:17px;
+    line-height: 17px;
+  }
+  .calendar_div{
+    position: relative;
+    font-size: 0.5em;
+    display: none;
+  }
+  .vuejs3-datepicker__value{
+    font-size: 0.5em;
+    display: none;
+  }
+  .vuejs3-datepicker .vuejs3-green{
+    font-size: 0.5em !important;
+    position: relative;
+    display: block;
+    width: 200px;
+  }
+  *{
+    box-sizing: inherit;
+  }
+  .vuejs3-datepicker__calendar-actionarea{
+    font-size: 0.5em;
+    width: 200px;
+    height: auto;
+  }
+  .vuejs3-datepicker__calendar {
+    position: absolute;
+    z-index: 100;
+    background: #fff;
+    width: 100%;
+    box-shadow: 0 0.2rem 1rem rgb(0 0 0 / 12%);
+    border-radius: 4px;
+    margin-top: 4px;
+  }
+  .datepicker{
+    width: 100%;
+  }
   .header{
     font-family: SF UI Text, sans-serif;
     width: 100%;
@@ -1044,7 +1138,7 @@ export default {
     width: 464px;
     border-radius: 21.67px;
     margin-top: 35px;
-    height: 488px;
+    height: auto;
     vertical-align: top;
     background: #FFFFFF;
     filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.15));
@@ -1052,8 +1146,9 @@ export default {
  
   .calendar_first_row {
     display: block;
-    height: 40%;
+    height: auto;
     width: 100%;
+    height: 200px;
   }
   .calendar_first_row_1{
     float: left;
@@ -1102,9 +1197,9 @@ export default {
   .calendar_first_row_2{
     float: right;
     width: 220px;
+    height: auto;
     border-top-right-radius: 21.67px;
     padding-top: 16px;
-    background-color: rgb(249,250,251);
   }
 
   .calendar_first_row_2 p{
