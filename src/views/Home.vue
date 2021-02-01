@@ -379,6 +379,7 @@ export default {
     display: none ;
     position: absolute !important;
     z-index: 9999 !important;
+    box-sizing: border-box;
   }
   .for_2_date{
     left: 529px !important;
