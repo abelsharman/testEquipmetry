@@ -398,8 +398,8 @@ export default {
   }
   .vuejs3-datepicker__calendar-actionarea .cell{
     font-size: 1.1em;
-    height:17px;
-    line-height: 17px;
+    height:17px !important;
+    line-height: 17px !important;
   }
   .calendar_div{
     position: relative;
