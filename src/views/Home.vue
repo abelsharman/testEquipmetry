@@ -381,20 +381,25 @@ export default {
 </script>
 
 <style>
+  /* datepicker css external component not mine*/
   .for_1_date, .for_2_date{
+    font-family: SF UI Text, sans-serif !important;
     display: none;
     position: absolute !important;
     z-index: 9999 !important;
     box-sizing: border-box !important;
   }
   .for_2_date{
+    font-family: SF UI Text, sans-serif !important;
     left: 529px !important;
   }
   .vuejs3-datepicker__calendar-topbar{
+    font-family: SF UI Text, sans-serif !important;
     display: none;
     box-sizing: border-box !important;
   }
   .vuejs3-datepicker__calendar-actionarea .cell{
+    font-family: SF UI Text, sans-serif !important;
     font-size: 1.1em !important;
     width: 12% !important;
     padding: 0 1px !important;
@@ -402,16 +407,19 @@ export default {
     line-height: 17px !important;
   }
   .calendar_div{
+    font-family: SF UI Text, sans-serif !important;
     position: relative;
     font-size: 0.5em;
     display: none;
     box-sizing: border-box !important;
   }
   .vuejs3-datepicker__value{
+    font-family: SF UI Text, sans-serif !important;
     font-size: 0.5em;
     display: none;
   }
   .vuejs3-datepicker .vuejs3-green{
+    font-family: SF UI Text, sans-serif !important;
     font-size: 0.5em !important;
     position: relative;
     display: block;
@@ -419,17 +427,18 @@ export default {
     box-sizing: border-box !important;
   }
   .vuejs3-datepicker .for_1_date, .vuejs3-datepicker .for_2_date{
+    font-family: SF UI Text, sans-serif !important;
     display: none;
     box-sizing: border-box !important;
   }
-
-
   .vuejs3-datepicker__calendar-actionarea{
+    font-family: SF UI Text, sans-serif !important;
     font-size: 0.5em;
     width: 200px;
     height: auto;
   }
   .vuejs3-datepicker__calendar {
+    font-family: SF UI Text, sans-serif !important;
     position: absolute;
     z-index: 100;
     background: #fff;
@@ -439,8 +448,27 @@ export default {
     margin-top: 4px;
   }
   .datepicker{
+    font-family: SF UI Text, sans-serif !important;
     width: 100%;
   }
+
+
+  /*  header section */
+
+  /*  header section */
+
+  /*  header section */
+  /*  header section */
+
+  /*  header section */
+  /*  header section */
+  /*  header section */
+  /*  header section */
+
+
+
+
+
   .header{
     font-family: SF UI Text, sans-serif;
     width: 100%;
@@ -457,7 +485,8 @@ export default {
     width: 18px;
     margin: 0;
     margin-left: 4%;
-    padding-top: 0%;
+    padding-top: 1%;
+    vertical-align: top;
   }
   .lines img{
     display: block;
@@ -475,8 +504,10 @@ export default {
     width: 18px;
     height: 22px;
     margin: 0;
-    margin-left: 60%;
+    margin-left: 58%;
     margin-top: 0px;
+    padding-top: 21px;
+    vertical-align: top;
     
   }
   .header_mail{
@@ -487,12 +518,12 @@ export default {
     vertical-align: top;
   }
   .header_user{
-    margin-left: 2%;
+    margin-left: 3%;
     display: inline-block;
   }
   .header_user_img {
     float: left;
-    margin-top: 7%;
+    margin-top: 9%;
     background-color: white;
     padding: 5px 7px;
     border-radius: 25px;
@@ -510,12 +541,13 @@ export default {
   .header_user_name{
     float: right;
     padding-left: 10px;
-    padding-top: 10px;
+    padding-top: 15px;
     font-family: SF UI Text;
     font-style: normal;
   }
   .header_user_name strong{
     font-weight: 600;
+    font-style: normal;
     font-size: 14px;
     line-height: 100%;
     color: #F9FAFC;
@@ -570,22 +602,28 @@ export default {
   }
   .main_left_second{
     position: relative;
-    top: -115px;
+    z-index: 100;
+    top: -145px;
     width: 40px;
     height: 32px;
-    left: -145px;
+    left: 102px;
   }
   .main_left_third{
     position: relative;
-    top: -120px;
+    top: -150px;
     width: 16px;
     height: 16px;
-    left: -173px;
+    left: 74px;
   }
 
 
 
   /* right part/block of main block */
+   /* right part/block of main block */
+    /* right part/block of main block */
+     /* right part/block of main block */
+      /* right part/block of main block */
+
 
   .main_right {
     font-family: SF UI Text, sans-serif;
@@ -845,6 +883,7 @@ export default {
    */
 
   .main_right_third_block{
+    font-family: SF UI Text, sans-serif;
     width: 51%;
     margin-top: 2%;
     background: #FFFFFF;
@@ -854,11 +893,18 @@ export default {
     padding: 18px 14px;
     font-family: SF UI Text;
   }
+  .main_right_third_block span{
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 100%;
+  }
   .main_right_third_block img{
     vertical-align: top;
     margin: 0 5px;
   }
   .main_right_third_block p{
+    font-family: SF UI Text, sans-serif;
     font-weight: 500;
     margin: 0;
     margin-top: 10px;
@@ -868,22 +914,26 @@ export default {
     color: #3C4858;
   }
   .main_right_third_block small{
+    font-family: SF UI Text, sans-serif;
     font-size: 18px;
     line-height: 100%;  
     color: rgba(60, 72, 88, 0.7);
   }
 
   .main_right_third_block_black, .main_right_third_block_blue{
+    font-family: SF UI Text, sans-serif;
     font-weight: 500;
     font-size: 14px;
     line-height: 100%;
     color: #3C4858;
   }
   .main_right_third_block_blue{
+    font-family: SF UI Text, sans-serif;
     color: #5188E7;
     cursor: pointer;
   }
   .main_right_third_block_1, .main_right_third_block_2, .main_right_third_block_3{
+    font-family: SF UI Text, sans-serif;
     display: inline-block;
     width: 32%;
   }
@@ -946,7 +996,7 @@ export default {
     background: linear-gradient(180deg, #FFD422 0%, #F2C800 100%);
     width: 95%;
     margin: 0;
-    padding: 16px 0 16px 16px;
+    padding: 16px 0 16px 5%;
   }
   .elements_first_row_1 strong, .elements_first_row_2 strong{
     font-style: normal;
@@ -1004,14 +1054,14 @@ export default {
   }
   .elements_first_row_4_1{
     position: relative;
-    left: 219px;
+    left: 67%;
     top: 4px;
     width: 34px;
     height: 34px;
   }
   .elements_first_row_4_2{
     position: relative;
-    left: 193px;
+    left: 59%;
     top: -5px;
     height: 15.668037414550781px;
     width: 15.668037414550781px;
@@ -1110,16 +1160,19 @@ export default {
   
   }
   .elements_first_row_3 .elements_first_row_3_1 {
-    position: absolute;   
+    position: relative;   
     width: 34px;
     height: 34px;
-    left: 277px;
-    top: 105px;
+    left: 86%;
+    top: 53px;
   }
   .elements_first_row_3 .elements_first_row_3_2 {
-    position: absolute;
-    left: 88.06%;
-    top: 74%;
+    position: relative;
+    left: 78.06%;
+    top: 45px;
+    height: 15.668037414550781px;
+    width: 15.668037414550781px;
+
 
   }
 
@@ -1283,6 +1336,7 @@ export default {
     padding-left: 2px;
     margin-top: 10px;
     display: block;
+    padding-bottom: 21px;
   }
 
   

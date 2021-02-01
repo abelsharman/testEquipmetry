@@ -297,7 +297,7 @@ export default {
 
         width: 925px;
         margin-left: 18%;
-        height: 300px;
+        height: auto;
         background: #FFFFFF;
         border-radius: 7px;
     }
@@ -307,15 +307,24 @@ export default {
         font-size: 18px;
         line-height: 21px;
         display: inline-block; 
-        padding-left: 10px;
+        padding-left: 0px;
     }
     .resource_main_back_img{
         width: 16px;
+        vertical-align: top;
+        padding-top: 35px;
+    }
+    .resource_main_back_p {
+        margin: 0;
+        vertical-align: top;
+        padding-left: 10px;
+        padding-top: 28px;
+        padding-bottom: 20px;
     }
     .resource_main_name_of_car{
         font-size: 16px;
-        margin-top: 20px;
         margin-bottom: 16px;
+        margin: 0;
         color: rgba(60, 72, 88, 0.7);
     }
     .resource_main_name{
